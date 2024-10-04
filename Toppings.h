@@ -3,12 +3,22 @@
 
 class Toppings
 {
-private:
-    std::string toppingType;
-    int numTopping;
-    int numToppingIncrease;
+protected:
+    std::string toppingType;//name of topping
+    int numTopping;//number of toppings
+    int numToppingIncrease;//pieces of toppings in a serve,initially set to 0
 public:
     Toppings();
     Toppings(std::string toppingType);
-    ~Toppings();
+
+    //set and get num of toppings
+    int getNumTopping();
+    void setNumTopping(int numTopping);
+    
+    //set and get type of topping
+    std::string getToppingType();
+    void setToppingType(std::string toppingType);
+
+    //virtual function for activating sfml
+    virtual void renderTopping();
 };
