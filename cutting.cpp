@@ -42,7 +42,7 @@ int main () {
     float baseRadius = 280.f;
 
      //define random irregular shape of cheese by changing the radius randomly at each point
-    for (int i = 0; i < numPoint; ++i) {
+    for (int i = 0; i < numPoint; i++) {
         float angle = 2 * 3.14159f * i / numPoint;  // circular angle  for each point
         float radiusOffset = random(-10.f, 10.f);     // Slightly randomize the radius for an irregular feel
         float radius = baseRadius + radiusOffset;
