@@ -1,12 +1,13 @@
 #pragma once
 #include <string>
-#include "Toppings.h"
+#include "Topping.h"
 
 //this is a class for FruitOrVeg toppings
-class FruitOrVeg : public Toppings
+class FruitOrVeg : public Topping
 {
 private:
 
 public:
-    FruitOrVeg();//set num of topping in a serve to 4
+    FruitOrVeg(std::string toppingType);//set num of topping in a serve to 4
+    void renderTopping()override;
 };

@@ -1,6 +1,9 @@
 #include "FruitOrVeg.h"
+#include <iostream>
 
-FruitOrVeg::FruitOrVeg()
-{
-    this->numToppingIncrease = 4;//4 pieces of veg/fruit in one serve
-}
+FruitOrVeg::FruitOrVeg(std::string toppingType):Topping(toppingType,4){}
+
+
+void FruitOrVeg::renderTopping(){
+    std::cout<<"FruitOrVeg topping"<<std::endl;
+};

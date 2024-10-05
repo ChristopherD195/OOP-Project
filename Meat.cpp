@@ -1,7 +1,8 @@
 #include "Meat.h"
+#include <iostream>
 
-Meat::Meat()
-{
-    this->numToppingIncrease = 1;//one piece of meat in one serve
-}
+Meat::Meat(std::string toppingType) : Topping(toppingType, 1) {}
 
+void Meat::renderTopping(){
+    std::cout<<"Meat topping"<<std::endl;
+};
