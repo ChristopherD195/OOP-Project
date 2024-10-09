@@ -1,5 +1,6 @@
 #ifndef PIZZA_H
 #define PIZZA_H
+#include "Topping.h"
 #include <iostream>
 #include <vector>
 
@@ -17,7 +18,7 @@ class Pizza {
         // virtual void setOvenDuration();
         // virtual void setCutting();
         bool addToppings(int toppingType);
-        bool removeToppingFromPizza(std::string toppingType);
+        bool removeToppingFromPizza(int toppingType);
         std::vector <Topping*> getToppings();
         ~Pizza();
 };

@@ -18,17 +18,17 @@ float Pizza::getCrustThickness() {return crustThickness;}
 
 bool Pizza::addToppings(int toppingType) {
     switch (toppingType) {
-    case 1:
+    case 1: {
         Topping* pineapple = new Pineapple();
-        toppings.push_back(pineapple);
+        this->toppings.push_back(pineapple);
         std::cout << "Topping added successfully" << std::endl;
         break;
-    case 2:
+    } case 2: {
         Topping* olive = new Olive();
-        toppings.push_back(olive);
+        this->toppings.push_back(olive);
         std::cout << "Topping added successfully" << std::endl;
         break;
-    default:
+    } default:
         std::cout << "This topping does not exist. Please try again." << std::endl;
         return false;
         break;
@@ -36,25 +36,45 @@ bool Pizza::addToppings(int toppingType) {
     return true;
 }
 
-bool Pizza::removeToppingFromPizza(std::string toppingType) {
-    int element = 0;;
+bool Pizza::removeToppingFromPizza(int toppingType) {
+    std::string toppingString = "";
+    switch (toppingType) {
+    case 1: {
+        toppingString = "pineapple";
+        break;
+    } case 2: {
+        toppingString = "olive";
+        break;
+    } default:
+        std::cout << "This topping does not exist. Please try again." << std::endl;
+        return false;
+        break;
+    }
+
+    int element = -1;
     for (std::size_t i = 0; i < toppings.size(); i++) {
         std::cout << "Checking element" << i << " of toppings" << std::endl;
-        if (toppings[i]->getToppingType() == toppingType) {
-            std::cout << "Topping" << i << " is the same" << std::endl;
+        if (toppings[i]->getToppingType() == toppingString) {
+            std::cout << "Topping " << i << " is the same" << std::endl;
             element = i;
         } else {
             std::cout << "Topping" << i << " is not the same" << std::endl;
         }
     }
-    toppings.erase(toppings.begin() + element);
-    if (element < toppings.size()) {
+    if (element > -1) {
+        toppings.erase(toppings.begin() + element);
+        std::cout << "Topping erased" << std::endl;
         return true;
     }
     std::cout << "Could not erase this topping" << std::endl;
     return false;
 }
 std::vector <Topping*> Pizza::getToppings() {return toppings;}
-Pizza::~Pizza () {}
+Pizza::~Pizza () {
+    for (Topping* topping : toppings) {
+    delete topping; // Free each dynamically allocated topping
+    }
+    toppings.clear();
+}
 // void::setOvenDuration() {}
 // void setCutting() {}
