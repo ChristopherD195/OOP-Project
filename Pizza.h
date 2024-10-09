@@ -5,19 +5,20 @@
 
 class Pizza {
     private:
-        //std::vector <Topping*> toppings;
+        std::vector <Topping*> toppings;
         int ovenDuration;
-        std::string base;
         float radius;
         float crustThickness;
     public:
         Pizza();
         int getOvenDuration();
-        virtual void setOvenDuration();
-        bool addToppings(Topping*);
-        bool removeToppingFromPizza(Topping->getToppingType());
-        Topping** getTopping();
-        //virtual void setCutting(???);
-        //getCutting() ???
+        float getRadius();
+        float getCrustThickness();
+        // virtual void setOvenDuration();
+        // virtual void setCutting();
+        bool addToppings(int toppingType);
+        bool removeToppingFromPizza(std::string toppingType);
+        std::vector <Topping*> getToppings();
+        ~Pizza();
 };
 #endif
