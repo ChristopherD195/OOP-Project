@@ -1,7 +1,7 @@
 #include "Pepperoni.h"
 #include <iostream>
 
-Pepperoni::Pepperoni():Meat("Pepperoni")
+Pepperoni::Pepperoni():Meat("pepperoni")
 {}
 
 void Pepperoni::renderTopping(){

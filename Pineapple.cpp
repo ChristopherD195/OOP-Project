@@ -1,7 +1,7 @@
 #include "Pineapple.h"
 #include <iostream>
 
-Pineapple::Pineapple():FruitOrVeg("Pineapple")
+Pineapple::Pineapple():FruitOrVeg("pineapple")
 {}
 
 void Pineapple::renderTopping(){
