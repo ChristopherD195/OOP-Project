@@ -19,7 +19,7 @@ class Pizza {
         // virtual void setCutting();
         bool addToppings(int toppingType);
         bool removeToppingFromPizza(int toppingType);
-        std::vector <Topping*> getToppings();
+        const std::vector<Topping*>& getToppings() const;
         ~Pizza();
 };
 #endif

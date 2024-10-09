@@ -9,8 +9,8 @@
 
 Pizza::Pizza() {
     ovenDuration = 0;
-    radius = 5.5;
-    crustThickness = 2;
+    radius = 400;
+    crustThickness = 50;
 }
 int Pizza::getOvenDuration() {return ovenDuration;}
 float Pizza::getRadius() {return radius;}
@@ -54,14 +54,15 @@ bool Pizza::removeToppingFromPizza(int toppingType) {
     int element = -1;
     for (std::size_t i = 0; i < toppings.size(); i++) {
         std::cout << "Checking element" << i << " of toppings" << std::endl;
-        if (toppings[i]->getToppingType() == toppingString) {
+        if (toppings[i] && toppings[i]->getToppingType() == toppingString) {
             std::cout << "Topping " << i << " is the same" << std::endl;
-            element = i;
+            element = static_cast<int>(i);;
+            break;
         } else {
             std::cout << "Topping" << i << " is not the same" << std::endl;
         }
     }
-    if (element > -1) {
+    if (element >= 0) {
         toppings.erase(toppings.begin() + element);
         std::cout << "Topping erased" << std::endl;
         return true;
@@ -69,7 +70,7 @@ bool Pizza::removeToppingFromPizza(int toppingType) {
     std::cout << "Could not erase this topping" << std::endl;
     return false;
 }
-std::vector <Topping*> Pizza::getToppings() {return toppings;}
+const std::vector<Topping*>& Pizza::getToppings() const { return this->toppings;}
 Pizza::~Pizza () {
     for (Topping* topping : toppings) {
     delete topping; // Free each dynamically allocated topping
