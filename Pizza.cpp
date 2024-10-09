@@ -78,4 +78,6 @@ Pizza::~Pizza () {
     toppings.clear();
 }
 // void::setOvenDuration() {}
+// int getOvenDuration();
+// void setOvenStartTime()
 // void setCutting() {}

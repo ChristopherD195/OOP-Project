@@ -15,7 +15,9 @@ class Pizza {
         int getOvenDuration();
         float getRadius();
         float getCrustThickness();
+        // virtual void setOvenStartTime();
         // virtual void setOvenDuration();
+        // virtual int getOvenDuration();
         // virtual void setCutting();
         bool addToppings(int toppingType);
         bool removeToppingFromPizza(int toppingType);
