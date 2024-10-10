@@ -3,12 +3,7 @@
 #include <iostream>
 #include <ctime>
 #include <vector>
-PlayerPizza::PlayerPizza() : Pizza() {
-    this->isCut = false;
-    this->isBaked = false;
-    this->isTopped = false;
-    this->tips = 0;
-    this->ovenDuration = 0;
+PlayerPizza::PlayerPizza() : Pizza(), isCut(false), isBaked(false), isTopped(false), tips(0), ovenDuration(0) {
     //create SFML Pizza
 }
 void PlayerPizza::setOvenStartTime() {
@@ -24,6 +19,7 @@ int PlayerPizza::getOvenDuration() {return this->ovenDuration;}
 bool PlayerPizza::getIsCut() {return this->isCut;}
 bool PlayerPizza::getIsBaked() {return this->isBaked;}
 bool PlayerPizza::getIsTopped() {return this->isTopped;}
+float PlayerPizza::getTips() {return this->tips;}
 void PlayerPizza::setIsCut(bool isCut) {
     this->isCut = isCut;
 }

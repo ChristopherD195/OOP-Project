@@ -22,6 +22,7 @@ class PlayerPizza : public Pizza {
         bool getIsCut();
         bool getIsBaked();
         bool getIsTopped();
+        float getTips();
         void setIsCut(bool isCut);
         void setIsBaked(bool isBaked);
         void setIsTopped(bool isTopped);
