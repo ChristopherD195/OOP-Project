@@ -8,11 +8,9 @@
 #include <vector>
 
 Pizza::Pizza() {
-    ovenDuration = 0;
     radius = 400;
     crustThickness = 50;
 }
-int Pizza::getOvenDuration() {return ovenDuration;}
 float Pizza::getRadius() {return radius;}
 float Pizza::getCrustThickness() {return crustThickness;}
 
@@ -77,7 +75,4 @@ Pizza::~Pizza () {
     }
     toppings.clear();
 }
-// void Pizza::setOvenStartTime() {}
-// void Pizza::setOvenDuration() {}
-// int Pizza::getOvenDuration() {}
 // void setCutting() {}
