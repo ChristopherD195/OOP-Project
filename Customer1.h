@@ -1,8 +1,8 @@
 #ifndef CUSTOMER1_H
 #define CUsTOMER1_H
-#include "Customer.h"
-#include <vector>
 #include <iostream>
+#include <vector>
+#include "Customer.h"
 
 class Customer1 : public Customer{
     private:

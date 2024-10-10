@@ -1,8 +1,6 @@
 #include <iostream>
 #include <ctime>
 #include <vector>
-#include <stdlib.h>
-
 #include "Customer.h"
 #include "Customer1.h"
 
