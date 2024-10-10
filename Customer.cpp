@@ -5,12 +5,13 @@
 
 Customer::Customer(){
     time_t arrivalTime = time(0);
-    int waitingTime = 0;
+    this->waitingTime = 0;
     std::vector<int> toppingOrder;
-    int ovenTime = 0;
-    int numCuts = 0;
-    float tipRating = 0;
-    float baseTip = 0;
+    this->ovenTime = 0;
+    this->numCuts = 0;
+    this->tipRating = 0;
+    this->baseTip = 0;
+
 }
 
 void Customer::setWaitingTime(){

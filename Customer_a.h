@@ -1,5 +1,5 @@
-#ifndef CUSTOMER1_H
-#define CUsTOMER1_H
+#ifndef CUSTOMER_A_H
+#define CUsTOMER_A_H
 #include <iostream>
 #include <vector>
 #include "Customer.h"

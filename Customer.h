@@ -32,7 +32,7 @@ class Customer{
         virtual void setBaseTip() = 0;
         float getBaseTip() {return baseTip;}
 
-        int getTipRating() {return tipRating;}
+        float getTipRating() {return tipRating;}
 };
 
 #endif
