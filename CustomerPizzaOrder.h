@@ -9,6 +9,7 @@ class CustomerPizza : Pizza{
     private:
         int numCuts;
         float baseTip;
+        int ovenDuration;
         std::vector<int> toppingOrder;
     public:
         CustomerPizza(float baseTips);
