@@ -3,13 +3,9 @@
 #include "FruitOrVeg.h"
 #include "Pineapple.h"
 #include "Olive.h"
-
-#include <iostream>
-#include <vector>
-
 Pizza::Pizza() {
-    radius = 400;
-    crustThickness = 50;
+    this->radius = 400;
+    this->crustThickness = 50;//TBD
 }
 float Pizza::getRadius() {return radius;}
 float Pizza::getCrustThickness() {return crustThickness;}

@@ -3,7 +3,7 @@ CXX = g++
 CXXFLAGS = -std=c++11 -g -Wall
 
 # Target executable for testing
-TARGET = testerOutWindows
+TARGET = ToppingTesterWindows
 
 # Source files
 SRC = Topping.cpp Meat.cpp FruitOrVeg.cpp Pepperoni.cpp Chicken.cpp Pineapple.cpp Olive.cpp ToppingTester.cpp

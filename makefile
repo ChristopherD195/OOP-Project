@@ -5,10 +5,10 @@ LDFLAGS = -L/opt/homebrew/Cellar/sfml/2.6.1/lib
 LIBS = -lsfml-graphics -lsfml-window -lsfml-system
 
 # Target executable
-TARGET = testerOut
+TARGET = PlayerPizzaTester
 
 # Source files
-SRC = Topping.cpp Meat.cpp FruitOrVeg.cpp Pepperoni.cpp Chicken.cpp Pineapple.cpp Olive.cpp ToppingTester.cpp
+SRC = Pizza.cpp PlayerPizza.cpp Topping.cpp Meat.cpp FruitOrVeg.cpp Pepperoni.cpp Chicken.cpp Pineapple.cpp Olive.cpp ToppingTester.cpp
 
 # Build target
 $(TARGET): $(SRC)
