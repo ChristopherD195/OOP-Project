@@ -1,9 +1,6 @@
-#include "Pizza.h"
 #include "PlayerPizza.h"
-#include <iostream>
-#include <ctime>
-#include <vector>
-PlayerPizza::PlayerPizza() : Pizza(), isCut(false), isBaked(false), isTopped(false), tips(0), ovenDuration(0) {
+
+PlayerPizza::PlayerPizza() : Pizza(), ovenDuration(0), isCut(false), isBaked(false), isTopped(false), tips(0)  {
     //create SFML Pizza
 }
 void PlayerPizza::setOvenStartTime() {

@@ -1,3 +1,4 @@
+/* No testing for abstract class
 #include "Pizza.h"
 #include "Topping.h"
 #include "FruitOrVeg.h"
@@ -8,6 +9,7 @@
 #include <vector>
 #include <limits>
 
+//Tested before Pizza class gets changed into abstract class. Worked properly.
 int main() {
     Pizza pizza;    
     //TEST ADD TOPPING
@@ -84,4 +86,4 @@ int main() {
         }
     }
     return 0;
-}
+}*/
