@@ -5,6 +5,8 @@
 #include "CustomerPizzaOrder.h"
 
 CustomerPizza::CustomerPizza(float baseTip){
-    this->numCuts = getNumCuts();
+    this->numCuts = Customer1.getNumCuts();
     this->baseTip = baseTip;
 }
+
+CustomerPizza::setOvenDuration();
