@@ -18,7 +18,6 @@ class CustomerPizza : Pizza{
         std::vector<int> getToppingOrder(){return toppingOrder;}
         int getNumCuts(){return numCuts;}
         void setNumCuts();
-
 };
 
 
