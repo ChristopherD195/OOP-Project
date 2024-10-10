@@ -15,5 +15,5 @@ Customer::Customer(){
 }
 
 void Customer::setWaitingTime(){
-    waitingTime = time(0);
+    waitingTime = time(0);      //this needs to be called in player pizza
 }

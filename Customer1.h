@@ -7,14 +7,12 @@
 class Customer1 : public Customer{
     private:
 
-
     public:
         Customer1();
         void setToppingOrder();
         void setBaseTip();
-        void setOvenTime(int ovenTime);
-        void setNumCuts(int numCuts);
-        
+        void setOvenTime();
+        void setNumCuts();
 };
 
 #endif

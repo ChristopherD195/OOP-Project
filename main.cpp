@@ -8,7 +8,7 @@ int main(){
     srand(time(0));
     Customer1 bob;
     // Customer* bobby = &bob;
-    bob.setBaseTip(5);
+    bob.setBaseTip();
     bob.setToppingOrder();
     std::cout << bob.getBaseTip() << std::endl;
 
@@ -18,5 +18,6 @@ int main(){
     for (int n : toppingOrder){
         std::cout << n;
     }
+    std::cout<< "" << std::endl;
     return 0;
 }
