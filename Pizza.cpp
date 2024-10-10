@@ -3,6 +3,9 @@
 #include "FruitOrVeg.h"
 #include "Pineapple.h"
 #include "Olive.h"
+#include "Pepperoni.h"
+#include "Chicken.h"
+#include "Meat.h"
 
 // Constructor to initialize the Pizza object with default values
 Pizza::Pizza() {
@@ -24,12 +27,24 @@ float Pizza::getCrustThickness() {
 bool Pizza::addToppings(int toppingType) {
     switch (toppingType) {
     case 1: { // Case for pineapple topping
+        Topping* pepperoni = new Pepperoni();  // Create a new Pineapple topping object
+        this->toppings.push_back(pepperoni);   // Add the topping to the toppings vector
+        std::cout << "Topping added successfully" << std::endl;
+        break;
+    }
+    case 2: { // Case for pineapple topping
+        Topping* chicken = new Chicken();  // Create a new Pineapple topping object
+        this->toppings.push_back(chicken);   // Add the topping to the toppings vector
+        std::cout << "Topping added successfully" << std::endl;
+        break;
+    }
+    case 3: { // Case for pineapple topping
         Topping* pineapple = new Pineapple();  // Create a new Pineapple topping object
         this->toppings.push_back(pineapple);   // Add the topping to the toppings vector
         std::cout << "Topping added successfully" << std::endl;
         break;
     }
-    case 2: { // Case for olive topping
+    case 4: { // Case for olive topping
         Topping* olive = new Olive();  // Create a new Olive topping object
         this->toppings.push_back(olive);  // Add the topping to the toppings vector
         std::cout << "Topping added successfully" << std::endl;
@@ -48,11 +63,19 @@ bool Pizza::removeToppingFromPizza(int toppingType) {
     std::string toppingString = "";  // Variable to store the name of the topping to remove
     switch (toppingType) {
     case 1: {
-        toppingString = "pineapple";  // Set the string to "pineapple" if topping type 1 is chosen
+        toppingString = "pepperoni";  // Set the string to "pineapple" if topping type 1 is chosen
         break;
     }
     case 2: {
-        toppingString = "olive";  // Set the string to "olive" if topping type 2 is chosen
+        toppingString = "chicken";  // Set the string to "olive" if topping type 2 is chosen
+        break;
+    }
+    case 3: {
+        toppingString = "pineapple";
+        break;
+    }
+    case 4: {
+        toppingString = "olive";
         break;
     }
     default:  // If an invalid topping type is entered

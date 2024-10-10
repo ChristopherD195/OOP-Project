@@ -30,7 +30,11 @@ int main() {
         int moreToppings = 0;
         
         // Ask user to select a topping type (pineapple or olive)
-        std::cout << "Please select a topping type ('1' for pineapple, '2' for olive):\n";
+        std::cout << "Please select a topping type as seen below\n";
+        std::cout << "Pepperoni: 1\n";
+        std::cout << "Chicken: 2\n";
+        std::cout << "Pineapple: 3\n";
+        std::cout << "Olive: 4\n";
         while (!(std::cin >> toppingType)) {
             // Ensure valid input
             std::cout << "This is not a valid input. Please try again.\n";
@@ -75,7 +79,11 @@ int main() {
         int toppingType = 0;
         int moreToppings = 0;
         std::cout << "Now we will remove toppings from the pizza" << std::endl;
-        std::cout << "Please select a topping type ('1' for pineapple, '2' for olive)" << std::endl;
+        std::cout << "Please select a topping type as seen below\n";
+        std::cout << "Pepperoni: 1\n";
+        std::cout << "Chicken: 2\n";
+        std::cout << "Pineapple: 3\n";
+        std::cout << "Olive: 4\n";
         
         // Ensure valid input for topping removal
         while (!(std::cin >> toppingType)) {
