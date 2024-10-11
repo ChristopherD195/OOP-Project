@@ -17,7 +17,7 @@ class CustomerPizza : public Pizza{
         CustomerPizza();
         int getNumCuts();
         float getBaseTip();
-        std::vector<int> getToppingOrder();
+        const std::vector<int>& getToppingOrder() const;
         int getOvenDuration();
 
         void setNumCuts();

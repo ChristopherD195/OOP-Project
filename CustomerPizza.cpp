@@ -36,8 +36,8 @@ int CustomerPizza::getOvenDuration(){
 }
 
 //Getter function to return the list of toppings (read-only access)
-const std::vector<int>& CustomerPizza::getToppingOrder(){
-    return toppingOrder;
+const std::vector<int>& CustomerPizza::getToppingOrder() const{
+    return this->toppingOrder;
 }
 
 
