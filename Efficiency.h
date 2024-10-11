@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include "Topping.h"
 class Efficiency
 {
 protected:
@@ -16,7 +17,7 @@ public:
     void setCuttingEfficiency(int playerCutting, int customerCutting);
     float getCuttingEfficiency();
 
-    void setToppingsEfficiency(const std::vector<int>& playerTopping, const std::vector<int>& customerTopping, int typesOfToppings);
+    void setToppingsEfficiency(std::vector<Topping*>& playerTopping, const std::vector<int>& customerTopping);
     float getToppingsEfficiency();
 
     void setOvenDurationEfficiency(int playerOvenDuration, int customerOvenDuration);
