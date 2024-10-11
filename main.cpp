@@ -50,8 +50,8 @@ int main() {
     Customer1 customer;
     customer.setToppingOrder();
     std::vector<int> customerToppings = customer.getToppingOrder();
-    customer.setOvenTime();
-    int customerOvenTime = customer.getOvenTime();
+    customer.setOvenDuration();
+    int customerOvenTime = customer.getOvenDuration();
     customer.setNumCuts();
     int customerNumCuts = customer.getNumCuts();
     std::cout << "Customer order: " << std::endl;
