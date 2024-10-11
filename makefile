@@ -8,7 +8,7 @@ CXXFLAGS = -std=c++11 -g -Wall # -I/opt/homebrew/Cellar/sfml/2.6.1/include -I/op
 TARGET = main
 
 # Source files
-SRC = Pizza.cpp PlayerPizza.cpp Topping.cpp Meat.cpp FruitOrVeg.cpp Pepperoni.cpp Chicken.cpp Pineapple.cpp Olive.cpp Customer.cpp Customer_a.cpp main.cpp
+SRC = Pizza.cpp PlayerPizza.cpp Topping.cpp Meat.cpp FruitOrVeg.cpp Pepperoni.cpp Chicken.cpp Pineapple.cpp Olive.cpp CustomerPizza.cpp main.cpp
 
 # Build target
 $(TARGET): $(SRC)
