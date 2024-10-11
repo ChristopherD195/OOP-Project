@@ -11,7 +11,7 @@ class Customer1 : public Customer{
         Customer1();
         void setToppingOrder();
         void setBaseTip();
-        void setOvenTime();
+        void setOvenDuration();
         void setNumCuts();
         //void feedback();
         //int feedback_calculation();

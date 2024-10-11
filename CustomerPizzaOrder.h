@@ -4,6 +4,7 @@
 #include <vector>
 #include "Pizza.h"
 #include "Customer.h"
+#include "Customer_a.h"
 
 class CustomerPizza : Pizza{
     private:
@@ -13,11 +14,11 @@ class CustomerPizza : Pizza{
         std::vector<int> toppingOrder;
     public:
         CustomerPizza(float baseTips);
-        void setOvenDuration();
-        void setToppingOrder();
-        std::vector<int> getToppingOrder(){return toppingOrder;}
+        void setOvenDuration(Customer& customer);
+        void setToppingOrder(Customer& customer);
+        void setNumCuts(Customer& customer);
         int getNumCuts(){return numCuts;}
-        void setNumCuts();
+        std::vector<int> getToppingOrder(){return toppingOrder;}
 };
 
 

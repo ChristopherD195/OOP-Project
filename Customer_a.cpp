@@ -16,8 +16,8 @@ void Customer1::setBaseTip(){
     baseTip = 5.00;
 }
 
-void Customer1::setOvenTime(){
-    ovenTime = std::rand()%11+30;
+void Customer1::setOvenDuration(){
+    ovenDuration = std::rand()%11+30;
 }
 
 void Customer1::setNumCuts(){

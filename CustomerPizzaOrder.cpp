@@ -8,14 +8,14 @@ CustomerPizza::CustomerPizza(float baseTip){
     this->baseTip = baseTip;
 }
 
-void CustomerPizza::setOvenDuration(){
-    this->ovenDuration = Customer.getOvenDuration();
+void CustomerPizza::setOvenDuration(Customer& customer){
+    this->ovenDuration = customer.getOvenDuration();
 }
 
-void CustomerPizza::setToppingOrder(){
-    this->toppingOrder = Customer.getToppingOrder();
+void CustomerPizza::setToppingOrder(Customer& customer){
+    this->toppingOrder = customer.getToppingOrder();
 }
 
-void CustomerPizza::setNumCuts(){
-    this->numCuts = Customer.getNumCuts();
+void CustomerPizza::setNumCuts(Customer& customer){
+    this->numCuts = customer.getNumCuts();
 }
