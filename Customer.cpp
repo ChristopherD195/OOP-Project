@@ -4,8 +4,8 @@
 #include "Customer.h"
 
 Customer::Customer(){
-    time_t arrivalTime = time(0);
-    this->waitingTime = 0;
+    //time_t arrivalTime = time(0);
+    //this->waitingTime = 0;
     std::vector<int> toppingOrder;
     this->ovenTime = 0;
     this->numCuts = 0;

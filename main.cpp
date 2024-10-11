@@ -47,7 +47,20 @@ int main() {
     }
 
     //Take order
-    
+    Customer1 customer;
+    customer.setToppingOrder();
+    std::vector<int> customerToppings = customer.getToppingOrder();
+    customer.setOvenTime();
+    int customerOvenTime = customer.getOvenTime();
+    customer.setNumCuts();
+    int customerNumCuts = customer.getNumCuts();
+    std::cout << "Customer order: " << std::endl;
+    std::cout << "Pepperoni: " << customerToppings[0] << std::endl;
+    std::cout << "Chicken: " << customerToppings[1] << std::endl;
+    std::cout << "Pineapple " << customerToppings[2] << std::endl;
+    std::cout << "Olive " << customerToppings[3] << std::endl;
+    std::cout << "Oven time: " << customerOvenTime << std::endl;
+    std::cout << "Number of pizza cuts: " << customerNumCuts << std::endl;
 
     // Prompt user to create a new pizza
     std::cout << "Press 1 to create a new Pizza." << std::endl;

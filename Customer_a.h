@@ -13,8 +13,8 @@ class Customer1 : public Customer{
         void setBaseTip();
         void setOvenTime();
         void setNumCuts();
-        void feedback();
-        int feedback_calculation();
+        //void feedback();
+        //int feedback_calculation();
 };
 
 #endif

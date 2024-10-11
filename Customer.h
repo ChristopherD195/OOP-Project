@@ -27,8 +27,8 @@ class Customer{
         virtual void setBaseTip() = 0;
         float getBaseTip() {return baseTip;}
         float getTipRating() {return tipRating;}
-        virtual void feedback();
-        int feedback_calculation(float);
+        //virtual void feedback();
+        //int feedback_calculation(float);
 };
 
 #endif
