@@ -16,6 +16,11 @@
 #include <chrono>
 #include <thread>
 
+#include <cmath>
+#include <vector>
+#include <SFML/Graphics.hpp>
+#include <Shape.hpp>
+
 int main() {
     int newPizza = 0;
     //Explaint the game
@@ -25,6 +30,16 @@ int main() {
     std::cout << "Press enter to continue.";
     std::cin.get(); //Press enter to continue
     std::cout << "The pizza shop has now opened!" << std::endl;
+
+    //draw basic shape of pizza
+    sf::CircleShape circle;
+    circle.setRadius(300);
+    circle.setOutlineColor(sf::Color(247,218,137));
+    circle.setOutlineThickness(newPizza.getcrustThickness());
+    circle.setPosition(100, 100);
+    circle.setPointCount(100);
+    circle.setFillColor(sf::Color(255,51,51,255));
+    sf::Vector2f center(400.f, 400.f);//centre of pizza
 
     //Simulate waiting time
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
