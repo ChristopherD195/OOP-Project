@@ -2,6 +2,7 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 #include <Shape.hpp>
+//this file will draw a pizza using sfml
 
 //generate a random value between min and max
 float random(float min, float max) {
