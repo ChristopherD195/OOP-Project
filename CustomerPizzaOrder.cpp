@@ -5,7 +5,6 @@
 #include "CustomerPizzaOrder.h"
 
 CustomerPizza::CustomerPizza(float baseTip){
-    this->numCuts = Customer.getNumCuts();
     this->baseTip = baseTip;
 }
 
@@ -17,6 +16,6 @@ void CustomerPizza::setToppingOrder(){
     this->toppingOrder = Customer.getToppingOrder();
 }
 
-void Customer::setNumCuts(){
+void CustomerPizza::setNumCuts(){
     this->numCuts = Customer.getNumCuts();
 }

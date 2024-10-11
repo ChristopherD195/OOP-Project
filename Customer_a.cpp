@@ -10,7 +10,7 @@
 Customer1::Customer1() : Customer(){}
 
 void Customer1::setToppingOrder(){
-    toppingOrder.assign({std::rand()%3+6, 0, 0, 0, 0});   //[pepperoni, chicken, pineapple, olive, mushroom]
+    toppingOrder.assign({std::rand()%3+6, 0, 0, 0});   //[pepperoni, chicken, pineapple, olive]
 }
 customer1
 void Customer1::setBaseTip(){
