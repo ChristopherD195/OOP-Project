@@ -20,6 +20,7 @@ class CustomerPizza : public Pizza{
         const std::vector<int>& getToppingOrder() const;
         int getOvenDuration();
 
+        void setOvenStartTime();
         void setNumCuts();
         void setBaseTip();
         void setToppingOrder();

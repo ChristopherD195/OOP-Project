@@ -23,6 +23,10 @@ void CustomerPizza::setNumCuts(){
     this->numCuts = rand()%7+2;
 }
 
+void CustomerPizza::setOvenStartTime(){
+    
+}
+
 int CustomerPizza::getNumCuts(){
     return numCuts;
 }
