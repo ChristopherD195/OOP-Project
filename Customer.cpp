@@ -19,19 +19,19 @@ void Customer::setWaitingTime(){
 }
 
 
-int Customer::feedback_calculation(float efficiency){
-    if (efficiency >= 0.0 && efficiency < 0.25) {
-        return 1;
-    } else if (efficiency >= 0.25 && efficiency < 0.5) {
-        return 2;
-    } else if (efficiency >= 0.5 && efficiency < 0.75) {
-        return 3;
-    } else if (efficiency >= 0.75 && efficiency < 1) {
-        return 4;
-    }else if (efficiency == 1) {
-        return 5;
-    } else {
-        std::cout << "Efficiency is out of range!" << std::endl;
-    }
-    return 0;
-}
+// int Customer::feedback_calculation(float efficiency){
+//     if (efficiency >= 0.0 && efficiency < 0.25) {
+//         return 1;
+//     } else if (efficiency >= 0.25 && efficiency < 0.5) {
+//         return 2;
+//     } else if (efficiency >= 0.5 && efficiency < 0.75) {
+//         return 3;
+//     } else if (efficiency >= 0.75 && efficiency < 1) {
+//         return 4;
+//     }else if (efficiency == 1) {
+//         return 5;
+//     } else {
+//         std::cout << "Efficiency is out of range!" << std::endl;
+//     }
+//     return 0;
+// }
