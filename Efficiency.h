@@ -1,11 +1,11 @@
 #pragma once
-
+#include <vector>
 class Efficiency
 {
 protected:
-    double cuttingEfficiency;
-    double toppingsEfficiency;
-    double ovenDurationEfficiency;
+    float cuttingEfficiency;
+    float toppingsEfficiency;
+    float ovenDurationEfficiency;
     float extraTip;//extra Tip based on execution of the pizza
 public:
     //default constructer--set to zero
@@ -13,14 +13,14 @@ public:
     ~Efficiency(){};
 
     //set and get each data member
-    void setCuttingEfficiency(double cuttingEfficiency);
-    double getCuttingEfficiency();
+    void setCuttingEfficiency(int playerCutting, int customerCutting);
+    float getCuttingEfficiency();
 
-    void setToppingsEfficiency(double toppingsEfficiency);
-    double getToppingsEfficiency();
+    void setToppingsEfficiency(const std::vector<int>& playerTopping, const std::vector<int>& customerTopping, int typesOfToppings);
+    float getToppingsEfficiency();
 
-    void setOvenDurationEfficiency(double ovenDurationEfficiency);
-    double getOvenDurationEfficiency();
+    void setOvenDurationEfficiency(int playerOvenDuration, int customerOvenDuration);
+    float getOvenDurationEfficiency();
 
     void setExtraTip();
     float getExtraTip();
