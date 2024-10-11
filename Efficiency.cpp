@@ -23,19 +23,37 @@ float Efficiency::getCuttingEfficiency() {
 }
 
 // Set toppings efficiency
-void Efficiency::setToppingsEfficiency( const std::vector<int>& playerTopping,  const std::vector<int>& customerTopping, int typesOfToppings) {
+void Efficiency::setToppingsEfficiency(  std::vector<Topping*>& playerTopping,  const std::vector<int>& customerTopping) {
     float totalEfficiency = 0.0f;
+    std::vector<int>playerCount = {0,0,0,0};
+    int totalTypeOrdered =0;
     
-    for (int i = 0; i < typesOfToppings; i++) {
-        if (customerTopping.at(i) != 0) {
-            float diff = std::abs(static_cast<float>(playerTopping.at(i) - customerTopping.at(i))) / customerTopping.at(i);
+    //record number of toppings in each category, stored in an int vector
+    for (int i = 0; i < playerTopping.size(); i++) {
+        if (playerTopping.at(i)->getToppingType() =="pepperoni") {
+            playerCount[0]++;
+        }else if(playerTopping.at(i)->getToppingType() =="chicken") {
+            playerCount[1]++;
+        } else if(playerTopping.at(i)->getToppingType() =="pineaaple") {
+            playerCount[2]++;
+        } else if (playerTopping.at(i)->getToppingType() =="olive") {
+            playerCount[3]++;
+        }
+    }
+
+    // For loop to compare player and customer
+    for (int i = 0; i < 4; i++)
+    {
+         if (customerTopping.at(i) != 0) {
+            float diff = std::abs(static_cast<float>(playerCount[i] - customerTopping[i])) / customerTopping[i];
             totalEfficiency += (1.0f - diff); // Normalize and sum the differences
+            totalTypeOrdered++;//one more type ordered
         } else {
             totalEfficiency += 0.0f; // If customerTopping is 0, treat as 0 efficiency for that topping
         }
     }
-
-    toppingsEfficiency = totalEfficiency / typesOfToppings; // Get the average efficiency for toppings
+    
+    toppingsEfficiency = totalEfficiency /totalTypeOrdered; // Get the average efficiency for 4 types of toppings
     toppingsEfficiency = std::max(0.0f,std::min(1.0f,toppingsEfficiency)); // Ensure it is between 0 and 1
     setExtraTip(); // Update the extra tip when toppings efficiency is set
 }
