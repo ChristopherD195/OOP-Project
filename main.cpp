@@ -80,6 +80,7 @@ int main() {
         std::cin.clear(); // Clear the error state
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
     }
+    pizza.setIsTopped(true);
     bool toppingExists = false;
     const std::vector<Topping*>& toppings = pizza.getToppings(); 
     // Start loop to add toppings to the pizza
@@ -183,13 +184,6 @@ int main() {
             }
         }
     }
-    
-    // TEST PlayerPizza functions and display current pizza status
-    std::cout << "Default oven duration: " << pizza.getOvenDuration() << std::endl;
-    std::cout << "Default isCut: " << pizza.getIsCut() << std::endl;
-    std::cout << "Default isBaked: " << pizza.getIsBaked() << std::endl;
-    std::cout << "Default isTopped: " << pizza.getIsTopped() << std::endl;
-    std::cout << "Default tips: " << pizza.getTips() << std::endl;
     
     // Place pizza in the oven
     int startBaking = 0;
