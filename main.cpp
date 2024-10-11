@@ -6,8 +6,7 @@
 #include "Olive.h"
 #include "Pepperoni.h"
 #include "Chicken.h"
-#include "Customer.h"
-#include "Customer_a.h"
+#include "CustomerPizza.h"
 
 #include <iostream>
 #include <vector>
@@ -47,9 +46,9 @@ int main() {
     }
 
     //Take order
-    Customer1 customer;
+    CustomerPizza customer;
     customer.setToppingOrder();
-    std::vector<int> customerToppings = customer.getToppingOrder();
+    const std::vector<int>& customerToppings = customer.getToppingOrder();
     customer.setOvenDuration();
     int customerOvenTime = customer.getOvenDuration();
     customer.setNumCuts();
