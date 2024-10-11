@@ -11,7 +11,7 @@ class PlayerPizza : public Pizza {
         bool isCut;
         bool isBaked;
         bool isTopped;
-        float tips;
+        float totalTips;
     protected:
         //std::vector<int> cutAngle;
     public:
@@ -22,7 +22,8 @@ class PlayerPizza : public Pizza {
         bool getIsCut();
         bool getIsBaked();
         bool getIsTopped();
-        float getTips();
+        float getTotalTips();
+        void setTotalTips(float baseTip, float extraTip);
         void setIsCut(bool isCut);
         void setIsBaked(bool isBaked);
         void setIsTopped(bool isTopped);

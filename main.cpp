@@ -6,8 +6,7 @@
 #include "Olive.h"
 #include "Pepperoni.h"
 #include "Chicken.h"
-#include "Customer.h"
-#include "Customer_a.h"
+#include "CustomerPizza.h"
 
 #include <iostream>
 #include <vector>
@@ -47,18 +46,18 @@ int main() {
     }
 
     //Take order
-    Customer1 customer;
+    CustomerPizza customer;
     customer.setToppingOrder();
-    std::vector<int> customerToppings = customer.getToppingOrder();
+    const std::vector<int>& customerToppings = customer.getToppingOrder();
     customer.setOvenDuration();
     int customerOvenTime = customer.getOvenDuration();
     customer.setNumCuts();
     int customerNumCuts = customer.getNumCuts();
     std::cout << "Customer order: " << std::endl;
-    std::cout << "Pepperoni: " << customerToppings[0] << std::endl;
-    std::cout << "Chicken: " << customerToppings[1] << std::endl;
-    std::cout << "Pineapple " << customerToppings[2] << std::endl;
-    std::cout << "Olive " << customerToppings[3] << std::endl;
+    std::cout << "Number of pepperoni slices: " << customerToppings[0] << std::endl;
+    std::cout << "Number of chicken slices: " << customerToppings[1] << std::endl;
+    std::cout << "Number of pineapple slices: " << customerToppings[2] << std::endl;
+    std::cout << "Number of olive slices: " << customerToppings[3] << std::endl;
     std::cout << "Oven time: " << customerOvenTime << std::endl;
     std::cout << "Number of pizza cuts: " << customerNumCuts << std::endl;
 
@@ -74,7 +73,8 @@ int main() {
     PlayerPizza pizza;  // Create a new PlayerPizza object
 
     int continueToToppings = 0;
-    std::cout << "Press 1 to add toppings to the pizza." << std::endl;
+    std::cout << "Press 1 to add a serve of toppings to the pizza." << std::endl;
+    std::cout << "(Please note that each serve of pepperoni or chicken will add 1 topping to the pizza, and each serve of pineapple or olive will add 4 toppings to the pizza)" << std::endl;
     while (!(std::cin >> continueToToppings) || continueToToppings != 1) {
         std::cout << "This is not a valid input. Please try again.\n";
         std::cin.clear(); // Clear the error state
@@ -89,7 +89,7 @@ int main() {
         int moreToppings = 0;
         
         // Ask user to select a topping type (pineapple or olive)
-        std::cout << "Please select a topping type as seen below\n";
+        std::cout << "Please select a topping type to serve as seen below\n";
         std::cout << "Pepperoni: 1\n";
         std::cout << "Chicken: 2\n";
         std::cout << "Pineapple: 3\n";
