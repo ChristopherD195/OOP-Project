@@ -6,6 +6,8 @@
 #include "Olive.h"
 #include "Pepperoni.h"
 #include "Chicken.h"
+#include "Customer.h"
+#include "Customer_a.h"
 
 #include <iostream>
 #include <vector>
@@ -26,10 +28,10 @@ int main() {
     //Simulate waiting time
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     std::cout << "Waiting for customer to open the shop..." << std::endl;
-    std::this_thread::sleep_for(std::chrono::milliseconds(2000));
-    std::cout << ". ";
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-    std::cout << ". ";
+    std::cout << ". " << std::endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    std::cout << ". " << std::endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     std::cout << "." << std::endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
@@ -44,6 +46,8 @@ int main() {
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
     }
 
+    //Take order
+    
 
     // Prompt user to create a new pizza
     std::cout << "Press 1 to create a new Pizza." << std::endl;
