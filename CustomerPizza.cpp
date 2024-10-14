@@ -4,7 +4,7 @@
 #include <cstdlib>
 
 CustomerPizza::CustomerPizza(){
-    srand(time(0));
+    srand(time(0));  //This should be in the main
     this->numCuts = 0;
     this->baseTip = 0;
     this->ovenDuration = 0;
@@ -12,7 +12,7 @@ CustomerPizza::CustomerPizza(){
 }
 
 void CustomerPizza::setOvenDuration(){
-    this->ovenDuration = rand()%26+5;
+    this->ovenDuration = rand()%36+5;
 }
 
 void CustomerPizza::setToppingOrder(){
@@ -24,7 +24,7 @@ void CustomerPizza::setNumCuts(){
 }
 
 void CustomerPizza::setOvenStartTime(){
-    
+    this->ovenStartTime = time(0);
 }
 
 int CustomerPizza::getNumCuts(){

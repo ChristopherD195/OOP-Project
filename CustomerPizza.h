@@ -3,13 +3,14 @@
 #include <iostream>
 #include <vector>
 #include "Pizza.h"
-
-class CustomerPizza : public Pizza{
+//
+class CustomerPizza : public Pizza{         
     private:
         int numCuts;
         float baseTip;
         std::vector<int> toppingOrder;
         int ovenDuration;
+        int ovenStartTime;
 
         // time_t arrivalTime = time(0);
         // time_t waitingTime = 0;
