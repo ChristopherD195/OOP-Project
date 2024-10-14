@@ -12,7 +12,6 @@ class CustomerPizza : public Pizza {
         std::vector<int> toppingOrder;
         int ovenDuration;
         int ovenStartTime;
-        int ovenDuration;  // Member to store oven duration
 
     public:
         // Constructor

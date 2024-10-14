@@ -29,7 +29,7 @@ void Efficiency::setToppingsEfficiency(  std::vector<Topping*>& playerTopping,  
     int totalTypeOrdered =0;
     
     //record number of toppings in each category, stored in an int vector
-    for (int i = 0; i < playerTopping.size(); i++) {
+    for (std::vector<Topping*>::size_type i = 0; i < playerTopping.size(); i++) {
         if (playerTopping.at(i)->getToppingType() =="pepperoni") {
             playerCount[0]++;
         }else if(playerTopping.at(i)->getToppingType() =="chicken") {

@@ -2,6 +2,7 @@
 #include <vector>
 #include "CustomerPizza.h"
 #include <cstdlib>
+#include "Efficiency.h"
 
 CustomerPizza::CustomerPizza(){
     srand(time(0));

@@ -4,6 +4,7 @@
 #include <vector>
 #include "PlayerPizza.h"
 #include "CustomerPizza.h"
+#include "Efficiency.h"
 
 //State class to handle saving and loading player's progress
 class State {
