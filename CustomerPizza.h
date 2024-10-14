@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 #include "Pizza.h"      
-
+#include "Efficiency.h"
 class CustomerPizza : public Pizza {
     private:
         int numCuts;
@@ -39,7 +39,7 @@ class CustomerPizza : public Pizza {
         void updateToppingOrder();
         void updateOvenDuration();
 
-        void reaction();            //Could have type std::string, but this needs to return multiple strings
+        void reaction(Efficiency rating);            //Could have type std::string, but this needs to return multiple strings
         int feedback_calculation(float);
     
 };

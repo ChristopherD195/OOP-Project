@@ -75,70 +75,70 @@ int CustomerPizza::feedback_calculation(float efficiency){
     return 0;
 }
 
-void CustomerPizza::reaction(Efficiency){
-    float efficiencyTemp = Efficiency.getCuttingEfficiency();
+void CustomerPizza::reaction(Efficiency rating){
+    float efficiencyTemp = rating.getToppingsEfficiency();
     switch (feedback_calculation(efficiencyTemp)){
         case 1:
-            std::cout << "Cutting: Reaction1" << std::endl;
+            std::cout << "Garbage on pizza? Save it for yourself!" << std::endl;
             break;
         case 2:
-            std::cout << "Cutting: Reaction2" << std::endl;
+            std::cout << "Seems like someone tried really hard? Mhm, not enough." << std::endl;
             break;
         case 3:
-            std::cout << "Cutting: Reaction3" << std::endl;
+            std::cout << "Oh lala! Mamma Mia! Perfecto:3" << std::endl;
             break;
         case 4:
-            std::cout << "Cutting: Reaction4" << std::endl;
+            std::cout << "Master Topping Spreader!" << std::endl;
             break;
         case 5:
-            std::cout << "Cutting: Reaction5" << std::endl;
-            break;
-        default:
-            std::cout << "Cutting: Invalid feedback" << std::endl;
-            break;
-    }
-
-    efficiencyTemp = Efficiency.getToppingsEfficiency();
-    switch (feedback_calculation(efficiencyTemp)){
-        case 1:
-            std::cout << "Toppings: Reaction1" << std::endl;
-            break;
-        case 2:
-            std::cout << "Toppings: Reaction2" << std::endl;
-            break;
-        case 3:
-            std::cout << "Toppings: Reaction3" << std::endl;
-            break;
-        case 4:
-            std::cout << "Toppings: Reaction4" << std::endl;
-            break;
-        case 5:
-            std::cout << "Toppings: Reaction5" << std::endl;
+            std::cout << "Molto Bene! Bellisimo :D" << std::endl;
             break;
         default:
             std::cout << "Toppings: Invalid feedback" << std::endl;
             break;
     }
     
-    efficiencyTemp= Efficiency.getOvenDurationEfficiency();
+    efficiencyTemp= rating.getOvenDurationEfficiency();
     switch (feedback_calculation(efficiencyTemp)){
         case 1:
-            std::cout << "Oven: Reaction1" << std::endl;
+            std::cout << "Ergh! Raw/Burned pizza? I am reporting you to Food Safety!" << std::endl;
             break;
         case 2:
-            std::cout << "Oven: Reaction2" << std::endl;
+            std::cout << "Meh. Too bad. Not visiting again." << std::endl;
             break;
         case 3:
-            std::cout << "Oven: Reaction3" << std::endl;
+            std::cout << "(sniff sniff)Smells good!" << std::endl;
             break;
         case 4:
-            std::cout << "Oven: Reaction4" << std::endl;
+            std::cout << "You have a baking brain:C" << std::endl;
             break;
-        case 4:
-            std::cout << "Oven: Reaction5" << std::endl;
+        case 5:
+            std::cout << "This is my dream baked pizza! QwQ" << std::endl;
             break;
         default:
             std::cout << "Oven: Invalid feedback" << std::endl;
+            break;
+    }
+
+    efficiencyTemp = rating.getCuttingEfficiency();
+    switch (feedback_calculation(efficiencyTemp)){
+        case 1:
+            std::cout << "GG! C'est terrible!!!! :<" << std::endl;
+            break;
+        case 2:
+            std::cout << "I wish you could cut your head off!" << std::endl;
+            break;
+        case 3:
+            std::cout << "Hmm. Decent cutting. Have you worked at Costco?" << std::endl;
+            break;
+        case 4:
+            std::cout << "Fei Chang Hao! Tres bien, love it." << std::endl;
+            break;
+        case 5:
+            std::cout << "You are an ancienct Greek God of Pizza cutting techniques!" << std::endl;
+            break;
+        default:
+            std::cout << "Cutting: Invalid feedback" << std::endl;
             break;
     }
 }
