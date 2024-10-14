@@ -26,5 +26,6 @@ class CustomerPizza : public Pizza{
         void setBaseTip();
         void setToppingOrder();
         void setOvenDuration();
+        std::string reaction();
 };
 #endif
