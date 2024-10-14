@@ -26,6 +26,7 @@ class CustomerPizza : public Pizza{
         void setBaseTip();
         void setToppingOrder();
         void setOvenDuration();
-        std::string reaction();
+        void reaction();            //Could have type std::string, but this needs to return multiple strings
+        int feedback_calculation(float);
 };
 #endif

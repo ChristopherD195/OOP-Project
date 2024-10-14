@@ -15,6 +15,7 @@
 #include <thread>
 
 int main() {
+    srand(time(0));
     int newPizza = 0;
     //Explaint the game
     std::cout << "Hello and welcome to the pizza shop!. Press enter to continue.";
