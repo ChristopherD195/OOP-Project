@@ -3,9 +3,7 @@
 
 #include <iostream>
 #include <vector>
-#include "Pizza.h"
-//
-class CustomerPizza : public Pizza{         
+#include "Pizza.h"      
 
 class CustomerPizza : public Pizza {
     private:
@@ -19,18 +17,6 @@ class CustomerPizza : public Pizza {
     public:
         // Constructor
         CustomerPizza();
-        int getNumCuts();
-        float getBaseTip();
-        const std::vector<int>& getToppingOrder() const;
-        int getOvenDuration();
-
-        void setOvenStartTime();
-        void setNumCuts();
-        void setBaseTip();
-        void setToppingOrder();
-        void setOvenDuration();
-        void reaction();            //Could have type std::string, but this needs to return multiple strings
-        int feedback_calculation(float);
 
         // Getters
         int getNumCuts() ;
@@ -52,6 +38,10 @@ class CustomerPizza : public Pizza {
         void updateBaseTip();
         void updateToppingOrder();
         void updateOvenDuration();
+
+        void reaction();            //Could have type std::string, but this needs to return multiple strings
+        int feedback_calculation(float);
+    
 };
 
 #endif

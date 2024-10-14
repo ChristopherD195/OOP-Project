@@ -2,9 +2,9 @@
 #include <vector>
 #include "CustomerPizza.h"
 #include <cstdlib>
-#include "Efficiency.h"
 
 CustomerPizza::CustomerPizza(){
+    srand(time(0));
     this->numCuts = 0;
     this->baseTip = 0;
     this->ovenDuration = 0;
@@ -13,8 +13,6 @@ CustomerPizza::CustomerPizza(){
 
 void CustomerPizza::updateOvenDuration(){
     this->ovenDuration = rand()%26+5;
-void CustomerPizza::setOvenDuration(){
-    this->ovenDuration = rand()%36+5;
 }
 
 void CustomerPizza::updateToppingOrder(){
@@ -26,11 +24,7 @@ void CustomerPizza::updateNumCuts(){
 }
 
 void CustomerPizza::setOvenStartTime(){
-    this->ovenStartTime = time(0);
-}
-
-void CustomerPizza::setBaseTip(){
-
+    
 }
 
 int CustomerPizza::getNumCuts(){
@@ -62,6 +56,8 @@ void CustomerPizza::setToppingOrder(std::vector<int> toppingOrder){
 void CustomerPizza::setOvenDuration(int ovenDuration){
     this->ovenDuration = ovenDuration;
 };
+
+
 int CustomerPizza::feedback_calculation(float efficiency){
     if (efficiency >= 0.0 && efficiency < 0.25) {
         return 1;
@@ -74,14 +70,14 @@ int CustomerPizza::feedback_calculation(float efficiency){
     }else if (efficiency == 1) {
         return 5;
     } else {
-        std::cout << "Efficiency is out of range!" << std::endl;
+        std::cout << "Efficiency is out of range! (Invalid input)" << std::endl;
     }
     return 0;
 }
 
-void CustomerPizza::feedback(){
+void CustomerPizza::reaction(Efficiency){
     float efficiencyTemp = Efficiency.getCuttingEfficiency();
-    switch (CustomerPizza.feedback_calculation(efficiencyTemp)){
+    switch (feedback_calculation(efficiencyTemp)){
         case 1:
             std::cout << "Cutting: Reaction1" << std::endl;
             break;
@@ -103,7 +99,7 @@ void CustomerPizza::feedback(){
     }
 
     efficiencyTemp = Efficiency.getToppingsEfficiency();
-    switch (CustomerPizza.feedback_calculation(efficiencyTemp)){
+    switch (feedback_calculation(efficiencyTemp)){
         case 1:
             std::cout << "Toppings: Reaction1" << std::endl;
             break;
@@ -125,7 +121,7 @@ void CustomerPizza::feedback(){
     }
     
     efficiencyTemp= Efficiency.getOvenDurationEfficiency();
-    switch (Customer.feedback_calculation(efficiencyTemp)){
+    switch (feedback_calculation(efficiencyTemp)){
         case 1:
             std::cout << "Oven: Reaction1" << std::endl;
             break;
