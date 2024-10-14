@@ -11,15 +11,15 @@ CustomerPizza::CustomerPizza(){
 
 }
 
-void CustomerPizza::setOvenDuration(){
+void CustomerPizza::updateOvenDuration(){
     this->ovenDuration = rand()%26+5;
 }
 
-void CustomerPizza::setToppingOrder(){
+void CustomerPizza::updateToppingOrder(){
     toppingOrder.assign({std::rand()%3+6, std::rand()%6+2, std::rand()%4*4, std::rand()%3*4}) ;  //[pepperoni, chicken, pineapple, olive]
 }
 
-void CustomerPizza::setNumCuts(){
+void CustomerPizza::updateNumCuts(){
     this->numCuts = rand()%7+2;
 }
 
@@ -40,9 +40,20 @@ int CustomerPizza::getOvenDuration(){
 }
 
 //Getter function to return the list of toppings (read-only access)
-const std::vector<int>& CustomerPizza::getToppingOrder() const{
+std::vector<int>& CustomerPizza::getToppingOrder() {
     return this->toppingOrder;
 }
 
-
+void CustomerPizza::setNumCuts(int numCuts){
+    this->numCuts = numCuts;
+};
+void CustomerPizza::setBaseTip(float baseTip){
+    this->baseTip = baseTip;
+};
+void CustomerPizza::setToppingOrder(std::vector<int> toppingOrder){
+    this->toppingOrder = toppingOrder;
+};
+void CustomerPizza::setOvenDuration(int ovenDuration){
+    this->ovenDuration = ovenDuration;
+};
 

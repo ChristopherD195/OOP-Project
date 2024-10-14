@@ -111,7 +111,7 @@ bool Pizza::removeToppingFromPizza(int toppingType) {
 }
 
 // Getter function to return the list of toppings (read-only access)
-const std::vector<Topping*>& Pizza::getToppings() const {
+std::vector<Topping*>& Pizza::getToppings() {
     return this->toppings;  // Return the reference to the toppings vector
 }
 

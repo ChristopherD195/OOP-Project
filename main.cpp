@@ -47,11 +47,11 @@ int main() {
 
     //Take order
     CustomerPizza customer;
-    customer.setToppingOrder();
+    customer.updateToppingOrder();
     const std::vector<int>& customerToppings = customer.getToppingOrder();
-    customer.setOvenDuration();
+    customer.updateOvenDuration();
     int customerOvenTime = customer.getOvenDuration();
-    customer.setNumCuts();
+    customer.updateNumCuts();
     int customerNumCuts = customer.getNumCuts();
     std::cout << "Customer order: " << std::endl;
     std::cout << "Number of pepperoni slices: " << customerToppings[0] << std::endl;

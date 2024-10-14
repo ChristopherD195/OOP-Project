@@ -18,8 +18,8 @@ bool PlayerPizza::getIsBaked() {return this->isBaked;}
 bool PlayerPizza::getIsTopped() {return this->isTopped;}
 float PlayerPizza::getTotalTips() {return this->totalTips;}
 
-void PlayerPizza::setTotalTips(float baseTip, float extraTip) {
-    this->totalTips += baseTip + extraTip;
+void PlayerPizza::setTotalTips(float playerTip) {
+    this->totalTips = playerTip;
 }
 
 void PlayerPizza::setIsCut(bool isCut) {
@@ -31,3 +31,7 @@ void PlayerPizza::setIsBaked(bool isBaked) {
 void PlayerPizza::setIsTopped(bool isTopped) {
     this->isTopped = isTopped;
 }
+
+void PlayerPizza::updateTotalTips(float baseTip, float extraTip){
+    this->totalTips += baseTip + extraTip;
+};

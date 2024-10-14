@@ -23,10 +23,11 @@ class PlayerPizza : public Pizza {
         bool getIsBaked();
         bool getIsTopped();
         float getTotalTips();
-        void setTotalTips(float baseTip, float extraTip);
+        void setTotalTips(float playerTip);
         void setIsCut(bool isCut);
         void setIsBaked(bool isBaked);
         void setIsTopped(bool isTopped);
+        void updateTotalTips(float baseTip, float extraTip);
         //void cutPizza();
 };
 
