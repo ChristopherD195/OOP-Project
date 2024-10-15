@@ -12,7 +12,7 @@ CustomerPizza::CustomerPizza(){
     this->ovenDuration = 0;
 }
 
-void CustomerPizza::updateOvenDuration(){
+void CustomerPizza::updateOvenDuration(){   //Randomised between 5-30 seconds
     this->ovenDuration = rand()%26+5;
 }
 
@@ -20,11 +20,11 @@ void CustomerPizza::updateToppingOrder(){
     toppingOrder.assign({std::rand()%3+6, std::rand()%6+2, std::rand()%4*4, std::rand()%3*4}) ;  //[pepperoni, chicken, pineapple, olive]
 }
 
-void CustomerPizza::updateNumCuts(){
+void CustomerPizza::updateNumCuts(){    //Randomised between 2-6 Cuts
     this->numCuts = rand()%7+2;
 }
 
-void CustomerPizza::updateBaseTip(){
+void CustomerPizza::updateBaseTip(){    //Randomised between $3-$5 
     this->baseTip = rand()%3+3;
 }
 
@@ -49,6 +49,7 @@ std::vector<int>& CustomerPizza::getToppingOrder() {
     return this->toppingOrder;
 }
 
+//All setter functions that set the CustomerPizza vaules to whats saved in the savefile
 void CustomerPizza::setNumCuts(int numCuts){
     this->numCuts = numCuts;
 };
