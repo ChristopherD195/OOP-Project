@@ -217,10 +217,8 @@ int main() {
             }
         
         // Take pizza out of the oven
-        std::cin >> input;
         std::cout << "Press 1 to take the pizza out of the oven." << std::endl;
-        int finishBaking;
-        std::cin >> finishBaking;
+        std::cin >> input;
 
         pizza.setOvenDuration();
         pizza.setIsBaked(true);
@@ -234,10 +232,8 @@ int main() {
         std::cout << "The customer wants " << customer.getNumCuts() << " cuts, which makes " << customer.getNumCuts() + 1 << " slices." << std::endl;
         std::cout << "Press 1 to cut the pizza or 'q' to quit and save." << std::endl;
         std::string input;
-        while (true) {
-            std::string input;
+        while (true) {;
             std::cin >> input;
-
             if (input == "q") {
                 State::saveGame(pizza, customer, gameStateFile, 3);
                 std::cout << "Game saved. Exiting..." << std::endl;
