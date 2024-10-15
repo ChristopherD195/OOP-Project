@@ -33,12 +33,14 @@ public:
         // Save Customer Pizza state
         int ovenDuration = customer.getOvenDuration();
         int numCuts = customer.getNumCuts();
+        int baseTip = customer.getBaseTip();
         std::vector<int> toppingOrder = customer.getToppingOrder();
         size_t toppingOrderSize = toppingOrder.size();
         file.write(reinterpret_cast<char*>(&toppingOrderSize),sizeof(toppingOrderSize));//write the size
         file.write(reinterpret_cast<char*>(toppingOrder.data()),toppingOrderSize*sizeof(int));//write the content
         file.write(reinterpret_cast<char*>(&ovenDuration), sizeof(ovenDuration));
         file.write(reinterpret_cast<char*>(&numCuts), sizeof(numCuts));
+        file.write(reinterpret_cast<char*>(&baseTip), sizeof(baseTip));
         
 
         file.close();
@@ -77,6 +79,7 @@ public:
         // Load Customer Order state
         int ovenDuration;
         int numCuts;
+        int baseTip;
         std::vector<int> toppingOrder;
         size_t toppingOrderSize;
         file.read(reinterpret_cast<char*>(&toppingOrderSize), sizeof(toppingOrderSize));  // Read the size
@@ -84,11 +87,13 @@ public:
         file.read(reinterpret_cast<char*>(toppingOrder.data()), toppingOrderSize*sizeof(int));
         file.read(reinterpret_cast<char*>(&ovenDuration), sizeof(ovenDuration));
         file.read(reinterpret_cast<char*>(&numCuts), sizeof(numCuts));
+        file.read(reinterpret_cast<char*>(&baseTip), sizeof(baseTip));
         
 
         // Set the Customer values after loading
         customer.setOvenDuration(ovenDuration);
         customer.setNumCuts(numCuts);
+        customer.setBaseTip(baseTip);
         customer.setToppingOrder(toppingOrder);
 
         file.close();
