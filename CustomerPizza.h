@@ -5,6 +5,11 @@
 #include <vector>
 #include "Pizza.h"      
 #include "Efficiency.h"
+
+//This is the main CustomerPizza class, which is the subclass of Pizza class. The purpose of this class is to create, set and store the customer's order throughout the game.
+//The CustomerPizza class will also be used to compare how well the PlayerPizza is compare to waht hte customer ordered, thus allowing the efficiency class to work.
+//Reactions to the efficiencies for the playerpizza will also be produced within this class, as seen in the .cpp file.
+
 class CustomerPizza : public Pizza {
     private:
         int numCuts;
