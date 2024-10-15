@@ -17,7 +17,7 @@ void CustomerPizza::updateOvenDuration(){   //Randomised between 5-30 seconds
 }
 
 void CustomerPizza::updateToppingOrder(){
-    toppingOrder.assign({std::rand()%3+6, std::rand()%6+2, std::rand()%4*4, std::rand()%3*4}) ;  //[pepperoni, chicken, pineapple, olive]
+    toppingOrder.assign({std::rand()%3+3, std::rand()%3+2, std::rand()%4, std::rand()%3}) ;  //[pepperoni, chicken, pineapple, olive]
 }
 
 void CustomerPizza::updateNumCuts(){    //Randomised between 2-6 Cuts
