@@ -27,18 +27,18 @@ class CustomerPizza : public Pizza {
         void setOvenDuration(int duration);  // Override to set oven duration
         int getOvenDuration() override;         // Override to get oven duration
 
-        // Setters
+        // Setters (Used when the player has a save file)
         void setNumCuts(int numCuts);
         void setBaseTip(float baseTip);
         void setToppingOrder(std::vector<int> toppingOrder);
 
-        // randomly generate orders
+        // randomly generate orders (Used when the player doesnt have a save file/is making a new customer)
         void updateNumCuts();
         void updateBaseTip();
         void updateToppingOrder();
         void updateOvenDuration();
 
-        void reaction(Efficiency rating);            //Could have type std::string, but this needs to return multiple strings
+        void reaction(Efficiency rating);
         int feedback_calculation(float);
     
 };
