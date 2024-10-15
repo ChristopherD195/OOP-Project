@@ -25,5 +25,10 @@ public:
 
     void setExtraTip();
     float getExtraTip();
+
+    //change the values
+    void changeCuttingEfficiency(float cuttingEfficiency);
+    void changeToppingsEfficiency(float toppingsEfficiency);
+    void changeOvenDurationEfficiency(float ovenDurationEfficiency);
 };
 

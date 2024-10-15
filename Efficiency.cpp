@@ -94,3 +94,14 @@ void Efficiency::setExtraTip() {
     extraTip = totalEfficiency * 10.0f;
     extraTip = std::max(0.0f,std::min(extraTip,10.0f)); // Ensure the extra tip is between 0 and 10
 }
+
+// Update the values for each efficiency
+void Efficiency::changeCuttingEfficiency(float cuttingEfficiency){
+    this->cuttingEfficiency = cuttingEfficiency;
+};
+void Efficiency::changeToppingsEfficiency(float toppingsEfficiency){
+    this->toppingsEfficiency= toppingsEfficiency;
+};
+void Efficiency::changeOvenDurationEfficiency(float ovenDurationEfficiency){
+    this->ovenDurationEfficiency = ovenDurationEfficiency;
+};

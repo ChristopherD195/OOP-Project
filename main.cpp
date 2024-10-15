@@ -22,6 +22,7 @@ int main() {
     PlayerPizza pizza;
     CustomerPizza customer;
     std::string gameStateFile = "game_state.txt";  // Game state file
+    Efficiency efficiency;// Initialize an efficiency object
     int gameStage = 0;  // Initialize game stage
 
     // Check if the game state file exists
@@ -36,7 +37,7 @@ int main() {
 
         if (loadChoice == "1") {
             // Load the game
-            gameStage = State::loadGame(pizza, customer, gameStateFile);
+            gameStage = State::loadGame(pizza, customer, gameStateFile,efficiency);
             if (gameStage == 0) {
                 std::cout << "Starting a new round..." << std::endl;
             } else {
@@ -48,6 +49,7 @@ int main() {
     } else {
         std::cout << "No saved game found. Starting a new game..." << std::endl;
     }
+    
 
     // Game introduction
     std::cout << "Hello and welcome to the pizza shop! Press enter to continue." << std::endl;
@@ -71,7 +73,7 @@ int main() {
         while (true) {
             std::cin >> input;
             if (input == "q") {
-                State::saveGame(pizza, customer, gameStateFile, 1);
+                State::saveGame(pizza, customer, gameStateFile, 1, efficiency);
                 std::cout << "Game saved. Exiting..." << std::endl;
                 return 0;
             } else if(input == "1") {
@@ -105,7 +107,7 @@ int main() {
         while (true) {
             std::cin >> input;
             if (input == "q") {
-                State::saveGame(pizza, customer, gameStateFile, 1);
+                State::saveGame(pizza, customer, gameStateFile, 1,efficiency);
                 std::cout << "Game saved. Exiting..." << std::endl;
                 return 0;
             } else if(input == "1") {
@@ -129,7 +131,7 @@ int main() {
             while (true) {
                 std::cin >> input;
                 if (input == "q") {
-                    State::saveGame(pizza, customer, gameStateFile, 1);
+                    State::saveGame(pizza, customer, gameStateFile, 1,efficiency);
                     std::cout << "Game saved. Exiting..." << std::endl;
                     return 0;
                 } else if(input == "1" || input == "2" || input == "3" || input == "4") {
@@ -172,6 +174,10 @@ int main() {
         }
 
         gameStage = 2;  // Move to the next game stage
+
+        //calculate the efficiency of toppings
+        efficiency.setToppingsEfficiency(pizza.getToppings(), customer.getToppingOrder());
+        std::cout << "Topping efficiency: " << efficiency.getToppingsEfficiency() << std::endl;
     }
     std::string input;
     if (gameStage == 2) {
@@ -182,7 +188,7 @@ int main() {
             std::cin >> input;
 
             if (input == "q") {
-                State::saveGame(pizza, customer, gameStateFile, 2);
+                State::saveGame(pizza, customer, gameStateFile, 2,efficiency);
                 std::cout << "Game saved. Exiting..." << std::endl;
                 return 0;
             } else if (input == "1") {
@@ -204,7 +210,7 @@ int main() {
                 std::cin >> input;
 
                 if (input == "q") {
-                    State::saveGame(pizza, customer, gameStateFile, 2);
+                    State::saveGame(pizza, customer, gameStateFile, 2,efficiency);
                     std::cout << "Game saved. Exiting..." << std::endl;
                     return 0;
                 } else if (input == "1") {
@@ -225,6 +231,9 @@ int main() {
         std::cout << "Pizza was baked for " << pizza.getOvenDuration() << " seconds." << std::endl;
 
         gameStage = 3;  // Move to the next game stage
+        // Calculate oven baking efficiency
+        efficiency.setOvenDurationEfficiency(customer.getOvenDuration(), pizza.getOvenDuration());
+        std::cout << "Oven efficiency: " << efficiency.getOvenDurationEfficiency() << std::endl;
     }
 
     if (gameStage == 3) {
@@ -235,7 +244,7 @@ int main() {
         while (true) {;
             std::cin >> input;
             if (input == "q") {
-                State::saveGame(pizza, customer, gameStateFile, 3);
+                State::saveGame(pizza, customer, gameStateFile, 3,efficiency);
                 std::cout << "Game saved. Exiting..." << std::endl;
                 return 0;
             } else if (input == "1") {
@@ -261,14 +270,9 @@ int main() {
         pizza.setNumCuts(playerPizzaCuts);
 
         // Calculate tips and efficiency
-        Efficiency efficiency;
-        efficiency.setToppingsEfficiency(pizza.getToppings(), customer.getToppingOrder());
-        std::cout << "Topping efficiency: " << efficiency.getToppingsEfficiency() << std::endl;
-        efficiency.setOvenDurationEfficiency(customer.getOvenDuration(), pizza.getOvenDuration());
-        std::cout << "Oven efficiency: " << efficiency.getOvenDurationEfficiency() << std::endl;
         efficiency.setCuttingEfficiency(customer.getNumCuts(), pizza.getNumCuts());
         std::cout << "Cuts efficiency: " << efficiency.getCuttingEfficiency() << std::endl;
-
+        // Interactive feedback with tips, customer reactions
         std::cout << "Customer feedback:" << std::endl;
         pizza.updateTotalTips(customer.getBaseTip(), efficiency.getExtraTip());
         customer.reaction(efficiency);

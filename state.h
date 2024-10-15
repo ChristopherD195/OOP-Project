@@ -10,7 +10,7 @@
 class State {
 public:
     // Save function that writes game data to a file
-    static void saveGame(PlayerPizza& pizza, CustomerPizza& customer, std::string GameState,int gameStage) {
+    static void saveGame(PlayerPizza& pizza, CustomerPizza& customer, std::string GameState,int gameStage, Efficiency& efficiency) {
         std::ofstream file(GameState, std::ios::out | std::ios::binary);
         if (!file) {
             std::cout << "Error opening file for saving." << std::endl;
@@ -25,10 +25,16 @@ public:
         bool isCut = pizza.getIsCut();
         bool isTopped = pizza.getIsTopped();
         float playerTips = pizza.getTotalTips();
+        float toppingsEfficiency = efficiency.getToppingsEfficiency();
+        float ovenDurationEfficiency = efficiency.getOvenDurationEfficiency();
+        float cuttingEfficiency = efficiency.getCuttingEfficiency();
         file.write(reinterpret_cast<char*>(&isTopped), sizeof(isTopped));
         file.write(reinterpret_cast<char*>(&isBaked), sizeof(isBaked));
         file.write(reinterpret_cast<char*>(&isCut), sizeof(isCut));
         file.write(reinterpret_cast<char*>(&playerTips), sizeof(playerTips));
+        file.write(reinterpret_cast<char*>(&toppingsEfficiency), sizeof(toppingsEfficiency));
+        file.write(reinterpret_cast<char*>(&ovenDurationEfficiency), sizeof(ovenDurationEfficiency));
+        file.write(reinterpret_cast<char*>(&cuttingEfficiency), sizeof(cuttingEfficiency));
 
         // Save Customer Pizza state
         int ovenDuration = customer.getOvenDuration();
@@ -48,7 +54,7 @@ public:
     }
 
     // Load topping, bake, and cut information by reading game data from a file
-    static int loadGame(PlayerPizza& pizza, CustomerPizza& customer, std::string GameState) {
+    static int loadGame(PlayerPizza& pizza, CustomerPizza& customer, std::string GameState,Efficiency& efficiency) {
         std::ifstream file(GameState, std::ios::in | std::ios::binary);
         if (!file) {
             std::cout << "Error opening file for loading." << std::endl;
@@ -64,10 +70,16 @@ public:
         bool isCut;
         bool isTopped;
         float playerTips;
+        float toppingsEfficiency;
+        float ovenDurationEfficiency;
+        float cuttingEfficiency;
         file.read(reinterpret_cast<char*>(&isTopped), sizeof(isTopped));
         file.read(reinterpret_cast<char*>(&isBaked), sizeof(isBaked));
         file.read(reinterpret_cast<char*>(&isCut), sizeof(isCut));
         file.read(reinterpret_cast<char*>(&playerTips), sizeof(playerTips));
+        file.read(reinterpret_cast<char*>(&toppingsEfficiency), sizeof(toppingsEfficiency));
+        file.read(reinterpret_cast<char*>(&ovenDurationEfficiency), sizeof(ovenDurationEfficiency));
+        file.read(reinterpret_cast<char*>(&cuttingEfficiency), sizeof(cuttingEfficiency));
         
 
         // Set the PlayerPizza values after loading
@@ -75,6 +87,11 @@ public:
         pizza.setIsCut(isCut);
         pizza.setIsTopped(isTopped);
         pizza.setTotalTips(playerTips);
+
+        //set player efficiency
+        efficiency.changeToppingsEfficiency(toppingsEfficiency);
+        efficiency.changeOvenDurationEfficiency(ovenDurationEfficiency);
+        efficiency.changeCuttingEfficiency(cuttingEfficiency);
 
         // Load Customer Order state
         int ovenDuration;
