@@ -18,9 +18,9 @@ class CustomerPizza : public Pizza {
         CustomerPizza();
 
         // Getters
-        int getNumCuts() ;
-        float getBaseTip() ;
-        std::vector<int>& getToppingOrder() ;
+        int getNumCuts();
+        float getBaseTip();
+        std::vector<int>& getToppingOrder();
 
         // Overriding pure virtual functions from Pizza class
         void setOvenStartTime() override;   // Override required
@@ -28,9 +28,9 @@ class CustomerPizza : public Pizza {
         int getOvenDuration() override;         // Override to get oven duration
 
         // Setters (Used when the player has a save file)
-        void setNumCuts(int numCuts);
-        void setBaseTip(float baseTip);
-        void setToppingOrder(std::vector<int> toppingOrder);
+        void setNumCuts(int numCuts);  //Taking input numCuts from the save file 
+        void setBaseTip(float baseTip);  //Taking input baseTip from the save file 
+        void setToppingOrder(std::vector<int> toppingOrder);  //Taking vector input toppingInput from the save file 
 
         // randomly generate orders (Used when the player doesnt have a save file/is making a new customer)
         void updateNumCuts();

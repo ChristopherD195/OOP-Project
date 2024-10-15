@@ -80,9 +80,9 @@ int CustomerPizza::feedback_calculation(float efficiency){
     return 0;
 }
 
-void CustomerPizza::reaction(Efficiency rating){
+void CustomerPizza::reaction(Efficiency rating){ 
     float efficiencyTemp = rating.getToppingsEfficiency();
-
+    std::cout << "\n";
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     std::cout << "Inspecting the Toppings on my Pizza" << std::endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
@@ -107,7 +107,7 @@ void CustomerPizza::reaction(Efficiency rating){
             std::cout << "Toppings: Invalid feedback" << std::endl;
             break;
     }
-
+    std::cout << "\n";
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     std::cout << "Inspecting the Baking of my Pizza" << std::endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
@@ -133,7 +133,7 @@ void CustomerPizza::reaction(Efficiency rating){
             std::cout << "Oven: Invalid feedback" << std::endl;
             break;
     }
-
+    std::cout << "\n";
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     std::cout << "Inspecting the Cutting of my Pizza" << std::endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));

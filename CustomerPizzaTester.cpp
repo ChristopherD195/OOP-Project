@@ -11,6 +11,7 @@
 int main(){
     srand(time(0));
     CustomerPizza customer;
+    PlayerPizza pizza;
     std::cout << "Testing random generation for the order" << std::endl;
 
     customer.updateBaseTip();
@@ -52,5 +53,9 @@ int main(){
     std::cout << "  Chicken: " << toppingOrders[1];
     std::cout << "  Pineapple: " << toppingOrders[2];
     std::cout << "  Olive: " << toppingOrders[3] << std::endl;
+
+    std::cout <<"\nTesting Feedback and Reactions" << std::endl;
+    //customer.reaction(); Tested with set efficiencies (the efficiency class was not used) and works
+
     return 0;
 }
