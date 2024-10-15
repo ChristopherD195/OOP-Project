@@ -16,6 +16,7 @@
 #include <ctime>
 
 int main() {
+    
     int stopGame = 0;
         // Player and customer pizzas
     PlayerPizza pizza;
@@ -216,7 +217,7 @@ int main() {
             if (!toppings.empty()) {
                 // Display remaining toppings after removal
                 for (std::size_t i = 0; i < toppings.size(); i++) {
-                    std::cout << "Element " << i << " is " << toppings[i]->getToppingType() << std::endl;
+                    std::cout << "Topping " << i+1 << " is " << toppings[i]->getToppingType() << std::endl;
                 }
 
                 // Ask if user wants to remove more toppings
@@ -361,7 +362,9 @@ int main() {
     if (userKeepGame == 1)
     {
        stopGame = 0;
-    } else if (userKeepGame ==0) {
+       gameStage = 0;
+       pizza.reset(); //set values in PlayerPizza to 0 to replay
+    } else if (userKeepGame == 0) {
         stopGame = 1;
     } else{
         std::cout << "Invalid input. Try again." <<std::endl;

@@ -36,8 +36,19 @@ void PlayerPizza::updateTotalTips(float baseTip, float extraTip){
     this->totalTips += baseTip + extraTip;
 };
 
- void PlayerPizza::setNumCuts(int cuts) {
+void PlayerPizza::setNumCuts(int cuts) {
     this->numCuts = cuts;
- }
+}
 
- int PlayerPizza::getNumCuts() {return this->numCuts;}
+int PlayerPizza::getNumCuts() {return this->numCuts;}
+
+void PlayerPizza::reset(){
+    this->ovenDuration = 0;
+    this->numCuts = 0;
+    this->isCut = false;
+    this->isBaked = false;
+    this->isTopped = false;
+    this->totalTips = 0;
+    toppings.clear();
+    toppings.shrink_to_fit();
+}

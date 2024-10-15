@@ -6,9 +6,10 @@
 
 class Pizza {
     private:
-        std::vector <Topping*> toppings;
         float radius;
         float crustThickness;
+    protected:
+        std::vector <Topping*> toppings;
     public:
         Pizza();
         float getRadius();

@@ -31,6 +31,7 @@ class PlayerPizza : public Pizza {
         void updateTotalTips(float baseTip, float extraTip);
         void setNumCuts(int cuts);
         int getNumCuts();
+        void reset();
 };
 
 #endif
