@@ -16,9 +16,8 @@
 #include <ctime>
 
 int main() {
-    srand(time(0));  // Initialize random seed
-
-    // Player and customer pizzas
+    int stopGame = 0;
+        // Player and customer pizzas
     PlayerPizza pizza;
     CustomerPizza customer;
     std::string gameStateFile = "game_state.txt";  // Game state file
@@ -49,6 +48,10 @@ int main() {
     } else {
         std::cout << "No saved game found. Starting a new game..." << std::endl;
     }
+
+    while(!stopGame) {
+    //keep the game running
+    srand(time(0));  // Initialize random seed
     
 
     // Game introduction
@@ -281,5 +284,22 @@ int main() {
 
     std::cout << "The pizza has now been delivered. Thanks for playing!" << std::endl;
 
-    return 0;
+    // Ask if use wishes to continue
+    std::cout << "Do you wish to keep playing? Press 1 to continue, press 0 to end." << std::endl;
+    int userKeepGame =0;
+    std::cin >> userKeepGame;
+    
+    if (userKeepGame == 1)
+    {
+       stopGame = 0;
+    } else if (userKeepGame ==0) {
+        stopGame = 1;
+    } else{
+        std::cout << "Invalid input. Try again." <<std::endl;
+    }
+    
+    }
+    std::cout <<"That's the end of the game."<<std::endl;
+    std::ofstream fileOut("game_state.txt");// Overwrite the content
+    file.close(); // Close immediately to delete content
 }
