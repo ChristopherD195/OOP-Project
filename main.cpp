@@ -225,6 +225,7 @@ int main() {
     }
     pizza.setNumCuts(playerPizzaCuts);
 
+    // Return pizza to customer
     int returnPizza = 0;
     std::cout << "Press 1 to pack and return the pizza to the customer." << std::endl;
     while (!(std::cin >> returnPizza) || returnPizza != 1) {
@@ -233,6 +234,8 @@ int main() {
         std::cin.clear(); // Clear the error state after invalid input
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
     }
+
+    //Calculate tips and efficiency
     Efficiency efficiency;
     efficiency.setToppingsEfficiency(toppings, customer.getToppingOrder());
     std::cout << "Topping efficiency: " << efficiency.getToppingsEfficiency() << std::endl;
@@ -242,6 +245,7 @@ int main() {
     std::cout << "Cutting efficiency: " << efficiency.getCuttingEfficiency() << std::endl;
 
     efficiency.setExtraTip();
+    std::cout << "Customer feedback:" << std::endl;
     pizza.updateTotalTips(customer.getBaseTip(), efficiency.getExtraTip());
     customer.reaction(efficiency);
     std::cout << "The total tip is $" << pizza.getTotalTips() << std::endl;
