@@ -80,15 +80,17 @@ int CustomerPizza::feedback_calculation(float efficiency){
     }
     return 0;
 }
-// Called at the end to give a customer reaction/feedback to the user
+
+//Outputs reactions for all 3 processes, which takes an input of Efficiency rating. 
 void CustomerPizza::reaction(Efficiency rating){ 
-    float efficiencyTemp = rating.getToppingsEfficiency();
+    float efficiencyTemp = rating.getToppingsEfficiency();  //Storing efficiencies into a temporary variable, this one is for Toppings efficiency
     std::cout << "\n";
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     std::cout << "Inspecting the Toppings on my Pizza" << std::endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
-    switch (feedback_calculation(efficiencyTemp)){
+    //Using the feedback_calculation function allows the use of switch statements to decide which reaction to give
+    switch (feedback_calculation(efficiencyTemp)){  //Reaction for Toppings efficiency
         case 1:
             std::cout << "Garbage on pizza? Save it for yourself!" << std::endl;
             break;
@@ -113,8 +115,8 @@ void CustomerPizza::reaction(Efficiency rating){
     std::cout << "Inspecting the Baking of my Pizza" << std::endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     
-    efficiencyTemp= rating.getOvenDurationEfficiency();
-    switch (feedback_calculation(efficiencyTemp)){
+    efficiencyTemp= rating.getOvenDurationEfficiency();     //Updating efficiencytemp to use Ovenduration efficiency
+    switch (feedback_calculation(efficiencyTemp)){      //Reation for Oven Duration efficiency
         case 1:
             std::cout << "Ergh! Raw/Burned pizza? I am reporting you to Food Safety!" << std::endl;
             break;
@@ -139,8 +141,8 @@ void CustomerPizza::reaction(Efficiency rating){
     std::cout << "Inspecting the Cutting of my Pizza" << std::endl;
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     
-    efficiencyTemp = rating.getCuttingEfficiency();
-    switch (feedback_calculation(efficiencyTemp)){
+    efficiencyTemp = rating.getCuttingEfficiency();     //Updating efficiencytemp to use Cutting efficiency
+    switch (feedback_calculation(efficiencyTemp)){      //Reactions for Cutting efficiency
         case 1:
             std::cout << "GG! C'est terrible!!!! :<" << std::endl;
             break;
@@ -161,3 +163,4 @@ void CustomerPizza::reaction(Efficiency rating){
             break;
     }
 }
+
