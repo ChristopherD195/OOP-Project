@@ -5,7 +5,7 @@
 #include "Chicken.h"
 #include "CustomerPizza.h"
 #include "Efficiency.h"
-#include "State.h"
+#include "state.h"
 
 #include <iostream>
 #include <fstream>
@@ -206,8 +206,10 @@ int main() {
         efficiency.setCuttingEfficiency(customer.getNumCuts(), pizza.getNumCuts());
         std::cout << "Cuts efficiency: " << efficiency.getCuttingEfficiency() << std::endl;
 
-        double playerTip = efficiency.getExtraTip() + customer.getBaseTip();
-        std::cout << "The player earned a tip of: " << playerTip << std::endl;
+        std::cout << "Customer feedback:" << std::endl;
+        pizza.updateTotalTips(customer.getBaseTip(), efficiency.getExtraTip());
+        customer.reaction(efficiency);
+        std::cout << "The player earned a tip of: $" << pizza.getTotalTips() << std::endl;
     }
 
     std::cout << "The pizza has now been delivered. Thanks for playing!" << std::endl;
