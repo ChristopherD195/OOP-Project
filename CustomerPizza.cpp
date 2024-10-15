@@ -3,13 +3,13 @@
 #include "CustomerPizza.h"
 #include <cstdlib>
 #include "Efficiency.h"
+#include <thread>
+#include <chrono>
 
 CustomerPizza::CustomerPizza(){
-    srand(time(0));
     this->numCuts = 0;
     this->baseTip = 0;
     this->ovenDuration = 0;
-
 }
 
 void CustomerPizza::updateOvenDuration(){
@@ -22,6 +22,10 @@ void CustomerPizza::updateToppingOrder(){
 
 void CustomerPizza::updateNumCuts(){
     this->numCuts = rand()%7+2;
+}
+
+void CustomerPizza::updateBaseTip(){
+    this->baseTip = rand()%3+3;
 }
 
 void CustomerPizza::setOvenStartTime(){
@@ -78,6 +82,11 @@ int CustomerPizza::feedback_calculation(float efficiency){
 
 void CustomerPizza::reaction(Efficiency rating){
     float efficiencyTemp = rating.getToppingsEfficiency();
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    std::cout << "Inspecting the Toppings on my Pizza" << std::endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+
     switch (feedback_calculation(efficiencyTemp)){
         case 1:
             std::cout << "Garbage on pizza? Save it for yourself!" << std::endl;
@@ -98,6 +107,10 @@ void CustomerPizza::reaction(Efficiency rating){
             std::cout << "Toppings: Invalid feedback" << std::endl;
             break;
     }
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    std::cout << "Inspecting the Baking of my Pizza" << std::endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     
     efficiencyTemp= rating.getOvenDurationEfficiency();
     switch (feedback_calculation(efficiencyTemp)){
@@ -121,6 +134,10 @@ void CustomerPizza::reaction(Efficiency rating){
             break;
     }
 
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    std::cout << "Inspecting the Cutting of my Pizza" << std::endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    
     efficiencyTemp = rating.getCuttingEfficiency();
     switch (feedback_calculation(efficiencyTemp)){
         case 1:
