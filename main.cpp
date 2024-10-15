@@ -31,10 +31,10 @@ int main() {
 
     if (fileExists) {
         std::cout << "A saved game was found. Would you like to load it? (1 for Yes, 0 for No)" << std::endl;
-        int loadChoice;
+        std::string loadChoice;
         std::cin >> loadChoice;
 
-        if (loadChoice == 1) {
+        if (loadChoice == "1") {
             // Load the game
             gameStage = State::loadGame(pizza, customer, gameStateFile);
             if (gameStage == 0) {
@@ -68,14 +68,21 @@ int main() {
         // Option to take the order or quit
         std::cout << "Press 1 to take their order or 'q' to quit and save." << std::endl;
         std::string input;
-        std::cin >> input;
-
-        if (input == "q") {
-            State::saveGame(pizza, customer, gameStateFile, 1);
-            std::cout << "Game saved. Exiting..." << std::endl;
-            return 0;
+        while (true) {
+            std::cin >> input;
+            if (input == "q") {
+                State::saveGame(pizza, customer, gameStateFile, 1);
+                std::cout << "Game saved. Exiting..." << std::endl;
+                return 0;
+            } else if(input == "1") {
+                break;
+            } else {
+                std::cout << "This is not a valid input. Please try again." << std::endl;
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //delete unused cin
+            }
         }
-
+        
         // Process customer order
         customer.updateToppingOrder();
         const std::vector<int>& customerToppings = customer.getToppingOrder();
@@ -95,12 +102,19 @@ int main() {
         // Create a new pizza or quit
         std::cout << "Press 1 to create a new pizza or 'q' to quit and save." << std::endl;
         std::string input;
-        std::cin >> input;
-
-        if (input == "q") {
-            State::saveGame(pizza, customer, gameStateFile, 1);
-            std::cout << "Game saved. Exiting..." << std::endl;
-            return 0;
+        while (true) {
+            std::cin >> input;
+            if (input == "q") {
+                State::saveGame(pizza, customer, gameStateFile, 1);
+                std::cout << "Game saved. Exiting..." << std::endl;
+                return 0;
+            } else if(input == "1") {
+                break;
+            } else {
+                std::cout << "This is not a valid input. Please try again." << std::endl;
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //delete unused cin
+            }
         }
 
         // Adding toppings loop
@@ -111,12 +125,20 @@ int main() {
             std::cout << "Please select a topping type:\n";
             std::cout << "Pepperoni: 1\nChicken: 2\nPineapple: 3\nOlive: 4\n";
             std::cout << "Or press 'q' to quit and save." << std::endl;
-            std::cin >> input;
 
-            if (input == "q") {
-                State::saveGame(pizza, customer, gameStateFile, 1);
-                std::cout << "Game saved. Exiting..." << std::endl;
-                return 0;
+            while (true) {
+                std::cin >> input;
+                if (input == "q") {
+                    State::saveGame(pizza, customer, gameStateFile, 1);
+                    std::cout << "Game saved. Exiting..." << std::endl;
+                    return 0;
+                } else if(input == "1" || input == "2" || input == "3" || input == "4") {
+                    break;
+                } else {
+                    std::cout << "This is not a valid input. Please try again." << std::endl;
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //delete unused cin
+                }
             }
 
             toppingType = std::stoi(input);
@@ -124,8 +146,18 @@ int main() {
 
             if (pizzaAdded) {
                 std::cout << "Would you like to add another topping? (1 for yes, 0 for no)" << std::endl;
-                std::cin >> moreToppings;
-                pizza.setIsTopped(!moreToppings);  // Player finishes topping
+                while (true) {
+                    std::cin >> input;
+                    if (input == "1" || input == "0") {
+                        moreToppings = std::stoi(input);
+                        pizza.setIsTopped(!moreToppings);  // Player finishes topping
+                        break;
+                    } else {
+                        std::cout << "This is not a valid input. Please try again." << std::endl;
+                        std::cin.clear();
+                        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //delete unused cin
+                    }
+                }
             }
         }
 
@@ -141,33 +173,51 @@ int main() {
 
         gameStage = 2;  // Move to the next game stage
     }
-
+    std::string input;
     if (gameStage == 2) {
         // Bake the pizza or quit
         std::cout << "The customer wishes for the pizza to be baked for " << customer.getOvenDuration() << " seconds." << std::endl;
         std::cout << "Press 1 to bake the pizza or 'q' to quit and save." << std::endl;
-        std::string input;
-        std::cin >> input;
+        while (true) {
+            std::cin >> input;
 
-        if (input == "q") {
-            State::saveGame(pizza, customer, gameStateFile, 2);
-            std::cout << "Game saved. Exiting..." << std::endl;
-            return 0;
+            if (input == "q") {
+                State::saveGame(pizza, customer, gameStateFile, 2);
+                std::cout << "Game saved. Exiting..." << std::endl;
+                return 0;
+            } else if (input == "1") {
+                break;
+            } else {
+                std::cout << "This is not a valid input. Please try again." << std::endl;
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //delete unused cin
+            }
         }
 
         pizza.setOvenStartTime();
         std::cout << "Pizza is now in the oven." << std::endl;
 
         // Option to pause while baking
+        std::string input;
         std::cout << "Press 'q' to quit and save during the baking process, or press 1 to continue baking." << std::endl;
+            while (true) {
+                std::cin >> input;
+
+                if (input == "q") {
+                    State::saveGame(pizza, customer, gameStateFile, 2);
+                    std::cout << "Game saved. Exiting..." << std::endl;
+                    return 0;
+                } else if (input == "1") {
+                    break;
+                } else {
+                    std::cout << "This is not a valid input. Please try again." << std::endl;
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //delete unused cin
+                }
+            }
+        
+        // Take pizza out of the oven
         std::cin >> input;
-
-        if (input == "q") {
-            State::saveGame(pizza, customer, gameStateFile, 2);
-            std::cout << "Game saved. Exiting..." << std::endl;
-            return 0;
-        }
-
         std::cout << "Press 1 to take the pizza out of the oven." << std::endl;
         int finishBaking;
         std::cin >> finishBaking;
@@ -184,17 +234,34 @@ int main() {
         std::cout << "The customer wants " << customer.getNumCuts() << " cuts, which makes " << customer.getNumCuts() + 1 << " slices." << std::endl;
         std::cout << "Press 1 to cut the pizza or 'q' to quit and save." << std::endl;
         std::string input;
-        std::cin >> input;
+        while (true) {
+            std::string input;
+            std::cin >> input;
 
-        if (input == "q") {
-            State::saveGame(pizza, customer, gameStateFile, 3);
-            std::cout << "Game saved. Exiting..." << std::endl;
-            return 0;
+            if (input == "q") {
+                State::saveGame(pizza, customer, gameStateFile, 3);
+                std::cout << "Game saved. Exiting..." << std::endl;
+                return 0;
+            } else if (input == "1") {
+                break;
+            } else {
+                std::cout << "This is not a valid input. Please try again." << std::endl;
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //delete unused cin
+            }
         }
 
         int playerPizzaCuts = 0;
         std::cout << "How many cuts do you wish to make: " << std::endl;
-        std::cin >> playerPizzaCuts;
+        while (true) {
+            if (std::cin >> playerPizzaCuts) {
+                break;
+            } else {
+                std::cout << "This is not a valid input. Please try again." << std::endl;
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //delete unused cin
+            }
+        }
         pizza.setNumCuts(playerPizzaCuts);
 
         // Calculate tips and efficiency
