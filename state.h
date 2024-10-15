@@ -50,7 +50,7 @@ public:
         std::ifstream file(GameState, std::ios::in | std::ios::binary);
         if (!file) {
             std::cout << "Error opening file for loading." << std::endl;
-            return;
+            return-1;
         }
 
         // Load game stage
