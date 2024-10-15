@@ -241,7 +241,7 @@ int main() {
 
     if (gameStage == 3) {
         // Cut the pizza or quit
-        std::cout << "The customer wants " << customer.getNumCuts() << " cuts, which makes " << customer.getNumCuts() + 1 << " slices." << std::endl;
+        std::cout << "The customer wants " << customer.getNumCuts() << " cuts, which makes " << customer.getNumCuts() << " slices." << std::endl;
         std::cout << "Press 1 to cut the pizza or 'q' to quit and save." << std::endl;
         std::string input;
         while (true) {;
