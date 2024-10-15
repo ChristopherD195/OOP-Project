@@ -49,7 +49,7 @@ std::vector<int>& CustomerPizza::getToppingOrder() {
     return this->toppingOrder;
 }
 
-//All setter functions that set the CustomerPizza vaules to whats saved in the savefile
+// All setter functions that set the CustomerPizza values to what is saved in the savefile
 void CustomerPizza::setNumCuts(int numCuts){
     this->numCuts = numCuts;
 };
@@ -63,7 +63,7 @@ void CustomerPizza::setOvenDuration(int ovenDuration){
     this->ovenDuration = ovenDuration;
 };
 
-
+// Used to ensure that reaction() function works properly
 int CustomerPizza::feedback_calculation(float efficiency){
     if (efficiency >= 0.0 && efficiency < 0.25) {
         return 1;
@@ -80,7 +80,7 @@ int CustomerPizza::feedback_calculation(float efficiency){
     }
     return 0;
 }
-
+// Called at the end to give a customer reaction/feedback to the user
 void CustomerPizza::reaction(Efficiency rating){ 
     float efficiencyTemp = rating.getToppingsEfficiency();
     std::cout << "\n";

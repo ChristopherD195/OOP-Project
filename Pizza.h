@@ -17,7 +17,6 @@ class Pizza {
         virtual void setOvenStartTime() = 0;
         void setOvenDuration();
         virtual int getOvenDuration() = 0;
-        // //virtual void setCutting();
         bool addToppings(int toppingType);
         bool removeToppingFromPizza(int toppingType);
         std::vector<Topping*>& getToppings();
