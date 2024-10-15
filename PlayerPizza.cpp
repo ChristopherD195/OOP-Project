@@ -1,6 +1,6 @@
 #include "PlayerPizza.h"
 
-PlayerPizza::PlayerPizza() : Pizza(), ovenDuration(0), isCut(false), isBaked(false), isTopped(false), totalTips(0)  {
+PlayerPizza::PlayerPizza() : Pizza(), ovenDuration(0), numCuts(0), isCut(false), isBaked(false), isTopped(false), totalTips(0)  {
     //create SFML Pizza
 }
 void PlayerPizza::setOvenStartTime() {
@@ -35,3 +35,9 @@ void PlayerPizza::setIsTopped(bool isTopped) {
 void PlayerPizza::updateTotalTips(float baseTip, float extraTip){
     this->totalTips += baseTip + extraTip;
 };
+
+ void PlayerPizza::setNumCuts(int cuts) {
+    this->numCuts = cuts;
+ }
+
+ int PlayerPizza::getNumCuts() {return this->numCuts;}
