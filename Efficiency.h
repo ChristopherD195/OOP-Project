@@ -17,7 +17,7 @@ public:
     void setCuttingEfficiency(int playerCutting, int customerCutting);
     float getCuttingEfficiency();
 
-    void setToppingsEfficiency(std::vector<Topping*>& playerTopping, const std::vector<int>& customerTopping);
+    void setToppingsEfficiency(const std::vector<Topping*>& playerTopping, const std::vector<int>& customerTopping);
     float getToppingsEfficiency();
 
     void setOvenDurationEfficiency(int playerOvenDuration, int customerOvenDuration);

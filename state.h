@@ -10,12 +10,15 @@
 class State {
 public:
     // Save function that writes game data to a file
-    static void saveGame(PlayerPizza& pizza, CustomerPizza& customer, std::string GameState) {
+    static void saveGame(PlayerPizza& pizza, CustomerPizza& customer, std::string GameState,int gameStage) {
         std::ofstream file(GameState, std::ios::out | std::ios::binary);
         if (!file) {
-            std::cerr << "Error opening file for saving." << std::endl;
+            std::cout << "Error opening file for saving." << std::endl;
             return;
         }
+
+        // Save game stage
+        file.write(reinterpret_cast<char*>(&gameStage), sizeof(gameStage));
 
         // Save Player Pizza state
         bool isBaked = pizza.getIsBaked();
@@ -43,12 +46,16 @@ public:
     }
 
     // Load topping, bake, and cut information by reading game data from a file
-    static void loadGame(PlayerPizza& pizza, CustomerPizza& customer, std::string GameState) {
+    static int loadGame(PlayerPizza& pizza, CustomerPizza& customer, std::string GameState) {
         std::ifstream file(GameState, std::ios::in | std::ios::binary);
         if (!file) {
-            std::cerr << "Error opening file for loading." << std::endl;
-            return;
+            std::cout << "Error opening file for loading." << std::endl;
+            return-1;
         }
+
+        // Load game stage
+        int gameStage;
+        file.read(reinterpret_cast<char*>(&gameStage), sizeof(gameStage));
 
         // Load PlayerPizza state
         bool isBaked;
@@ -86,6 +93,8 @@ public:
 
         file.close();
         std::cout << "Game loaded successfully!" << std::endl;
+
+        return gameStage;
     }
 };
 

@@ -8,6 +8,7 @@ class PlayerPizza : public Pizza {
     private:
         std::time_t ovenStartTime;
         int ovenDuration;
+        int numCuts;
         bool isCut;
         bool isBaked;
         bool isTopped;
@@ -28,7 +29,8 @@ class PlayerPizza : public Pizza {
         void setIsBaked(bool isBaked);
         void setIsTopped(bool isTopped);
         void updateTotalTips(float baseTip, float extraTip);
-        //void cutPizza();
+        void setNumCuts(int cuts);
+        int getNumCuts();
 };
 
 #endif

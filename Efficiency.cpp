@@ -23,7 +23,7 @@ float Efficiency::getCuttingEfficiency() {
 }
 
 // Set toppings efficiency
-void Efficiency::setToppingsEfficiency(  std::vector<Topping*>& playerTopping,  const std::vector<int>& customerTopping) {
+void Efficiency::setToppingsEfficiency(const std::vector<Topping*>& playerTopping,  const std::vector<int>& customerTopping) {
     float totalEfficiency = 0.0f;
     std::vector<int>playerCount = {0,0,0,0};
     int totalTypeOrdered =0;
