@@ -121,7 +121,7 @@ int main() {
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //delete unused cin
             }
         }
-
+        const std::vector<Topping*>& toppings = pizza.getToppings();
         // Adding toppings loop
         while (pizza.getIsTopped() == 0) {
             int toppingType = 0;
@@ -149,6 +149,15 @@ int main() {
             toppingType = std::stoi(input);
             bool pizzaAdded = pizza.addToppings(toppingType);  // Add the selected topping
 
+            // Display all toppings added
+            if (!toppings.empty()) {
+                for (std::size_t i = 0; i < toppings.size(); i++) {
+                    std::cout << "Topping " << i + 1 << " on the pizza is " << toppings[i]->getToppingType() << std::endl;
+                }
+            } else {
+                std::cout << "The pizza has no toppings." << std::endl;
+            }
+             // Add a new topping
             if (pizzaAdded) {
                 std::cout << "Would you like to add another topping? (1 for yes, 0 for no)" << std::endl;
                 while (true) {
@@ -167,7 +176,6 @@ int main() {
         }
 
         // Display all toppings added
-        const std::vector<Topping*>& toppings = pizza.getToppings();
         if (!toppings.empty()) {
             for (std::size_t i = 0; i < toppings.size(); i++) {
                 std::cout << "Topping " << i + 1 << " on the pizza is " << toppings[i]->getToppingType() << std::endl;
@@ -176,11 +184,72 @@ int main() {
             std::cout << "The pizza has no toppings." << std::endl;
         }
 
-        gameStage = 2;  // Move to the next game stage
+     // REMOVE TOPPINGS
+    int continueToRemoveToppings = 0;
+    std::cout << "Press 1 to remove a topping. Press any other integer if you do not wish to remove a topping." << std::endl;
+    while (!(std::cin >> continueToRemoveToppings)) {
+        std::cout << "This is not a valid input. Please try again.\n";
+        std::cin.clear(); // Clear the error state
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
+    }
+    if (continueToRemoveToppings == 1) {
+        bool toppingExists = false;
+        while (toppingExists == false) {
+            int toppingType = 0;
+            int moreToppings = 0;
+            std::cout << "Now we will remove toppings from the pizza" << std::endl;
+            std::cout << "Please select a topping type as seen below\n";
+            std::cout << "Pepperoni: 1\n";
+            std::cout << "Chicken: 2\n";
+            std::cout << "Pineapple: 3\n";
+            std::cout << "Olive: 4\n";
 
-        //calculate the efficiency of toppings
-        efficiency.setToppingsEfficiency(pizza.getToppings(), customer.getToppingOrder());
-        std::cout << "Topping efficiency: " << efficiency.getToppingsEfficiency() << std::endl;
+            // Ensure valid input for topping removal
+            while (!(std::cin >> toppingType)) {
+                std::cout << "This is not a valid input. Please try again." << std::endl;
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            }
+
+            toppingExists = pizza.removeToppingFromPizza(toppingType);  // Remove topping from pizza
+
+            if (!toppings.empty()) {
+                // Display remaining toppings after removal
+                for (std::size_t i = 0; i < toppings.size(); i++) {
+                    std::cout << "Element " << i << " is " << toppings[i]->getToppingType() << std::endl;
+                }
+
+                // Ask if user wants to remove more toppings
+                std::cout << "Would you like to remove a topping? (1 for yes, 0 for no)" << std::endl;
+                while (!(std::cin >> moreToppings)) {
+                    std::cout << "This is not a valid input. Please try again." << std::endl;
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                }
+                if (moreToppings == 1) {
+                    toppingExists = false;  // Continue if user wants to remove more toppings
+                } else {
+                    std::cout << "No more toppings were removed." << std::endl;
+                }
+            } else {
+                std::cout << "The pizza has no more toppings" << std::endl;
+            }
+        }
+    }
+    // Display toppings
+    if (!toppings.empty()) {
+        for (std::size_t i = 0; i < toppings.size(); i++) {
+            std::cout << "Topping " << i + 1 << " on the pizza is " << toppings[i]->getToppingType() << std::endl;
+        }
+    } else {
+        std::cout << "The pizza has no toppings." << std::endl;
+    }
+
+    gameStage = 2;  // Move to the next game stage
+
+    //calculate the efficiency of toppings
+    efficiency.setToppingsEfficiency(pizza.getToppings(), customer.getToppingOrder());
+    std::cout << "Topping efficiency: " << efficiency.getToppingsEfficiency() << std::endl;
     }
     std::string input;
     if (gameStage == 2) {
