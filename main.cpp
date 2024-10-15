@@ -7,6 +7,8 @@
 #include "Pepperoni.h"
 #include "Chicken.h"
 #include "CustomerPizza.h"
+#include "Efficiency.h"
+#include "state.h"
 
 #include <iostream>
 #include <vector>
@@ -17,7 +19,7 @@
 int main() {
     srand(time(0));
     int newPizza = 0;
-    //Explaint the game
+    //Explain the game
     std::cout << "Hello and welcome to the pizza shop!. Press enter to continue.";
     std::cin.get(); //Press enter to continue
     std::cout << "In this game you will receive a customer order, from which you must make a pizza, add toppings, and bake the pizza." << std::endl;
@@ -59,8 +61,6 @@ int main() {
     std::cout << "Number of chicken slices: " << customerToppings[1] << std::endl;
     std::cout << "Number of pineapple slices: " << customerToppings[2] << std::endl;
     std::cout << "Number of olive slices: " << customerToppings[3] << std::endl;
-    std::cout << "Oven time: " << customerOvenTime << std::endl;
-    std::cout << "Number of pizza cuts: " << customerNumCuts << std::endl;
 
     // Prompt user to create a new pizza
     std::cout << "Press 1 to create a new Pizza." << std::endl;
@@ -185,8 +185,9 @@ int main() {
             }
         }
     }
-    
+
     // Place pizza in the oven
+    std::cout << "The customer wishes for the pizza to be baked for " << customerOvenTime << " seconds." << std::endl;
     int startBaking = 0;
     std::cout << "Press 1 to bake the pizza." << std::endl;
     while (!(std::cin >> startBaking) || startBaking != 1) {
@@ -211,5 +212,38 @@ int main() {
     std::cout << "Oven duration: " << pizza.getOvenDuration() << std::endl;  // Display oven duration
     std::cout << "isBaked status: " << pizza.getIsBaked() << std::endl;  // Display if pizza is baked
     
+    // Cut the pizza
+    std::cout << "The customer wishes for the pizza to have " << customerNumCuts << " cuts." << std::endl;
+    std::cout << "That is, they want " << customerNumCuts + 1 << " slices." << std::endl;
+    int playerPizzaCuts = 0;
+    
+    std::cout << "How many cuts do you wish to make: " << std::endl;
+    while (!(std::cin >> playerPizzaCuts)) {
+        std::cout << "This is not a valid input. Please try again.\n";
+        std::cin.clear(); // Clear the error state
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
+    }
+    pizza.setNumCuts(playerPizzaCuts);
+
+    int returnPizza = 0;
+    std::cout << "Press 1 to pack and return the pizza to the customer." << std::endl;
+    while (!(std::cin >> returnPizza) || returnPizza != 1) {
+        // Ensure valid input: only '1' is accepted to proceed with giving the pizza back to the customer
+        std::cout << "This is not a valid input. Please try again.\n";
+        std::cin.clear(); // Clear the error state after invalid input
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
+    }
+    Efficiency efficiency;
+    efficiency.setToppingsEfficiency(toppings, customer.getToppingOrder());
+    std::cout << "Topping efficiency: " << efficiency.getToppingsEfficiency() << std::endl;
+    efficiency.setOvenDurationEfficiency(pizza.getOvenDuration(), customerOvenTime);
+    std::cout << "Baking time efficiency: " << efficiency.getOvenDurationEfficiency() << std::endl;
+    efficiency.setCuttingEfficiency(pizza.getNumCuts(), customerNumCuts);
+    std::cout << "Cutting efficiency: " << efficiency.getCuttingEfficiency() << std::endl;
+
+    efficiency.setExtraTip();
+    pizza.updateTotalTips(customer.getBaseTip(), efficiency.getExtraTip());
+    customer.reaction(efficiency);
+    std::cout << "The total tip is $" << pizza.getTotalTips() << std::endl;
     return 0;
 }

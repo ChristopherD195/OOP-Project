@@ -43,11 +43,11 @@ public:
     }
 
     // Load topping, bake, and cut information by reading game data from a file
-    static void loadGame(PlayerPizza& pizza, CustomerPizza& customer, std::string GameState) {
+    static bool loadGame(PlayerPizza& pizza, CustomerPizza& customer, std::string GameState) {
         std::ifstream file(GameState, std::ios::in | std::ios::binary);
         if (!file) {
             std::cerr << "Error opening file for loading." << std::endl;
-            return;
+            return false;
         }
 
         // Load PlayerPizza state
@@ -86,6 +86,7 @@ public:
 
         file.close();
         std::cout << "Game loaded successfully!" << std::endl;
+        return true;
     }
 };
 
