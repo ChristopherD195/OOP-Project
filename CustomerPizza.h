@@ -11,7 +11,6 @@ class CustomerPizza : public Pizza {
         float baseTip;
         std::vector<int> toppingOrder;
         int ovenDuration;
-        int ovenStartTime;
 
     public:
         // Constructor
