@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <SFML/Graphics.hpp>
+#include <Shape.hpp>
 
 class Topping
 {
@@ -8,6 +10,7 @@ protected:
     int numTopping;//number of Topping
     int numToppingIncrease;//pieces of Topping in a serve,initially set to 0
     bool isRendered;
+    sf::Vector2f position;
 public:
     Topping();
     Topping(std::string toppingType,int numToppingIncrease);
@@ -26,7 +29,7 @@ public:
 
 
     //virtual function for activating sfml
-    virtual void renderTopping()=0;
+    virtual void renderTopping(float angle, float distance,sf::Vector2f center)=0;
 
     virtual ~Topping();
 };

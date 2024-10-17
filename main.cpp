@@ -15,6 +15,11 @@
 #include <limits>
 #include <ctime>
 
+#include <cmath>
+#include <SFML/Graphics.hpp>
+#include <Shape.hpp>
+#include <random>
+
 int main() {
     
     int stopGame = 0;
@@ -53,8 +58,44 @@ int main() {
     while(!stopGame) {
     //keep the game running
     srand(time(0));  // Initialize random seed
-    
 
+    // Random generator for topping positions
+    std::mt19937 rng(time(0));
+    std::uniform_real_distribution<float> distAngle(0.f, 2 * 3.14159f);
+    std::uniform_real_distribution<float> distRadius(0.f, 280.f);//280.f is the base radius of pizza
+
+    //draw basic shape of pizza
+        sf::CircleShape circle;
+        circle.setRadius(300);
+        circle.setOutlineColor(sf::Color(247,218,137));
+        circle.setOutlineThickness(50);
+        circle.setPosition(100, 100);
+        circle.setPointCount(100);
+        circle.setFillColor(sf::Color(255,51,51,255));
+        sf::Vector2f center(400.f, 400.f);//centre of pizza
+
+        //draw cheese
+        sf::ConvexShape cheese;
+        const int numPoint = 50;
+        cheese.setPointCount(numPoint);
+        float baseRadius = 280.f;
+
+        //define random irregular shape of cheese by changing the radius randomly at each point
+        for (int i = 0; i < numPoint; ++i) {
+            float angle = 2 * 3.14159f * i / numPoint;  // circular angle  for each point
+            float radiusOffset = static_cast<float>(rand() % 20 - 10);    // Slightly randomize the radius for an irregular feel (-10~10)
+            float radius = baseRadius + radiusOffset;
+            
+            //calculate the position of each vertex using polar coordinates
+            float x = center.x + radius * std::cos(angle);
+            float y = center.y + radius * std::sin(angle);
+            
+            //set each point of the shape& fill color
+            cheese.setPoint(i, sf::Vector2f(x, y));
+            cheese.setFillColor(sf::Color(255,236,194));
+        }
+
+    
     // Game introduction
     std::cout << "Hello and welcome to the pizza shop! Press enter to continue." << std::endl;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear input buffer
@@ -122,6 +163,28 @@ int main() {
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //delete unused cin
             }
         }
+        //Pizza animation
+        //create a window
+        sf::RenderWindow window(sf::VideoMode(800, 800),"New Pizza");
+        window.draw(circle);
+        if (window.isOpen())
+        {
+            sf::Event event;
+            while (window.pollEvent(event))
+            {
+                if (event.type == sf::Event::Closed)
+                    window.close();
+            }
+
+            //set background colour
+            window.clear(sf::Color(153, 76, 0));
+            window.draw(circle);
+            window.draw(cheese);
+            window.display();
+        }
+        //end of sfml
+
+
         const std::vector<Topping*>& toppings = pizza.getToppings();
         // Adding toppings loop
         while (pizza.getIsTopped() == 0) {
@@ -136,6 +199,7 @@ int main() {
                 std::cin >> input;
                 if (input == "q") {
                     State::saveGame(pizza, customer, gameStateFile, 1,efficiency);
+                    window.close();//close the window
                     std::cout << "Game saved. Exiting..." << std::endl;
                     return 0;
                 } else if(input == "1" || input == "2" || input == "3" || input == "4") {
@@ -237,14 +301,39 @@ int main() {
             }
         }
     }
+    window.close();
+    sf::RenderWindow window2(sf::VideoMode(800, 800), "Add Toppings");
+
+if (window2.isOpen())
+{
+    sf::Event event;
+    while (window2.pollEvent(event))
+    {
+        if (event.type == sf::Event::Closed)
+            window2.close();
+    }
+
+    // Set background color
+    window2.clear(sf::Color(153, 76, 0));
+
+    // Draw pizza base and cheese
+    window2.draw(circle);
+    window2.draw(cheese);
+
     // Display toppings
     if (!toppings.empty()) {
+        // Set random position within pizza
+        float angle = distAngle(rng);
+        float distance = distRadius(rng);
         for (std::size_t i = 0; i < toppings.size(); i++) {
             std::cout << "Topping " << i + 1 << " on the pizza is " << toppings[i]->getToppingType() << std::endl;
+            toppings[i]->renderTopping(angle, distance, center);
         }
-    } else {
-        std::cout << "The pizza has no toppings." << std::endl;
     }
+
+    // Display everything on the window
+    window2.display();
+}
 
     gameStage = 2;  // Move to the next game stage
 

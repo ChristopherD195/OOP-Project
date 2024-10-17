@@ -9,5 +9,5 @@ private:
 
 public:
     FruitOrVeg(std::string toppingType);//set num of topping in a serve to 4
-    void renderTopping()override;
+    void renderTopping(float angle, float distance,sf::Vector2f center)override;
 };

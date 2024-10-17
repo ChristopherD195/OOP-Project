@@ -7,7 +7,7 @@ class Pepperoni :public Meat//inherit from meat
 private:
 public:
     Pepperoni();
-    void renderTopping()override;
+    void renderTopping(float angle, float distance,sf::Vector2f center)override;
 };
 
 

@@ -7,5 +7,5 @@ class Olive :public FruitOrVeg//inherit from FruitOrVeg
 private:
 public:
     Olive();
-    void renderTopping()override;
+    void renderTopping(float angle, float distance,sf::Vector2f center)override;
 };

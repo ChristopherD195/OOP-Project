@@ -1,8 +1,8 @@
 # Compiler and flags
 CXX = g++
-CXXFLAGS = -std=c++11 -g -Wall # -I/opt/homebrew/Cellar/sfml/2.6.1/include -I/opt/homebrew/Cellar/sfml/2.6.1/include/SFML/Graphics
-# LDFLAGS = -L/opt/homebrew/Cellar/sfml/2.6.1/lib
-# LIBS = -lsfml-graphics -lsfml-window -lsfml-system
+CXXFLAGS = -std=c++11 -g -Wall  -I/opt/homebrew/Cellar/sfml/2.6.1/include -I/opt/homebrew/Cellar/sfml/2.6.1/include/SFML/Graphics
+LDFLAGS = -L/opt/homebrew/Cellar/sfml/2.6.1/lib
+LIBS = -lsfml-graphics -lsfml-window -lsfml-system
 
 # Target executable
 TARGET = main
