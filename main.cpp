@@ -302,39 +302,6 @@ int main() {
         }
     }
     window.close();
-    sf::RenderWindow window2(sf::VideoMode(800, 800), "Add Toppings");
-
-if (window2.isOpen())
-{
-    sf::Event event;
-    while (window2.pollEvent(event))
-    {
-        if (event.type == sf::Event::Closed)
-            window2.close();
-    }
-
-    // Set background color
-    window2.clear(sf::Color(153, 76, 0));
-
-    // Draw pizza base and cheese
-    window2.draw(circle);
-    window2.draw(cheese);
-
-    // Display toppings
-    if (!toppings.empty()) {
-        // Set random position within pizza
-        float angle = distAngle(rng);
-        float distance = distRadius(rng);
-        for (std::size_t i = 0; i < toppings.size(); i++) {
-            std::cout << "Topping " << i + 1 << " on the pizza is " << toppings[i]->getToppingType() << std::endl;
-            toppings[i]->renderTopping(angle, distance, center);
-        }
-    }
-
-    // Display everything on the window
-    window2.display();
-}
-
     gameStage = 2;  // Move to the next game stage
 
     //calculate the efficiency of toppings
