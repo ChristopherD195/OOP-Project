@@ -2,6 +2,10 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 #include <Shape.hpp>
+#include <random>
+#include <ctime>
+#include <cmath>
+#include <cstdlib>
 
 class Topping
 {
@@ -29,7 +33,7 @@ public:
 
 
     //virtual function for activating sfml
-    virtual void renderTopping(float angle, float distance,sf::Vector2f center)=0;
+    virtual sf::Shape* renderTopping(/*sf::Vector2f center*/)=0;
 
     virtual ~Topping();
 };

@@ -3,6 +3,8 @@
 
 Meat::Meat(std::string toppingType) : Topping(toppingType, 1) {}
 
-void Meat::renderTopping(float angle, float distance,sf::Vector2f center){
+sf::Shape* Meat::renderTopping(){
     std::cout<<"Meat topping"<<std::endl;
+    sf::Shape* a;//incomplete
+    return a;
 };

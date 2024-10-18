@@ -3,6 +3,8 @@
 
 Olive::Olive() : FruitOrVeg("olive") {}
 
-void Olive::renderTopping(float angle, float distance,sf::Vector2f center){
+sf::Shape* Olive::renderTopping(){
     std::cout<<"Olive rendered successfully"<<std::endl;
+    sf::Shape* a;//incomplete
+    return a;
 };

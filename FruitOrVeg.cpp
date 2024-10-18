@@ -4,6 +4,8 @@
 FruitOrVeg::FruitOrVeg(std::string toppingType):Topping(toppingType,4){}
 
 
-void FruitOrVeg::renderTopping(float angle, float distance,sf::Vector2f center){
+sf::Shape* FruitOrVeg::renderTopping(){
     std::cout<<"FruitOrVeg topping"<<std::endl;
+    sf::Shape* a;//incomplete
+    return a;
 };

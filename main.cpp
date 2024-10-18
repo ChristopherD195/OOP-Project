@@ -13,12 +13,12 @@
 #include <chrono>
 #include <thread>
 #include <limits>
-#include <ctime>
+
 
 #include <cmath>
 #include <SFML/Graphics.hpp>
 #include <Shape.hpp>
-#include <random>
+
 
 int main() {
     
@@ -59,10 +59,6 @@ int main() {
     //keep the game running
     srand(time(0));  // Initialize random seed
 
-    // Random generator for topping positions
-    std::mt19937 rng(time(0));
-    std::uniform_real_distribution<float> distAngle(0.f, 2 * 3.14159f);
-    std::uniform_real_distribution<float> distRadius(0.f, 280.f);//280.f is the base radius of pizza
 
     //draw basic shape of pizza
         sf::CircleShape circle;
@@ -164,22 +160,52 @@ int main() {
             }
         }
         //Pizza animation
-        //create a window
+        //create a window(first window)
         sf::RenderWindow window(sf::VideoMode(800, 800),"New Pizza");
+        window.setFramerateLimit(20);
         window.draw(circle);
-        if (window.isOpen())
+        // sf::Shape* pepperoni = new sf::CircleShape (30);  // Radius of 30 for pepperoni
+        // pepperoni->setFillColor(sf::Color(255, 0, 0));
+        // sf::Vector2f position;
+        // position.x = 400 + (rand() %  280) * std::cos((float)(rand() % 62) / 10.f);
+        // position.y = 400 + (rand() %  280) * std::sin((float) (rand() % 62) / 10.f);
+        // std::cout << position.x << ", " << position.y << std::endl;
+        // pepperoni->setPosition(position.x,position.y);
+        // std::cout<<"Pepporoni rendered successfully"<<std::endl;
+        while (window.isOpen())
         {
             sf::Event event;
             while (window.pollEvent(event))
             {
-                if (event.type == sf::Event::Closed)
-                    window.close();
+                if (event.type == sf::Event::Closed) {
+                    window.close();}
+                if (event.type == sf:: Event:: MouseButtonPressed) {
+                    if (customer.getToppingOrder()[0]>0){
+                        pizza.addToppings(1);
+                        customer.getToppingOrder()[0]--;
+                    } else if (customer.getToppingOrder()[1]>0){
+                        pizza.addToppings(2);
+                        customer.getToppingOrder()[1]--;
+                    } else if (customer.getToppingOrder()[2]>0){
+                        pizza.addToppings(3);
+                        customer.getToppingOrder()[2]--;
+                    } else if (customer.getToppingOrder()[3]>0){
+                        pizza.addToppings(4);
+                        customer.getToppingOrder()[3]--;
+                    } else {
+                        window.close();
+                    }
+                }
             }
 
             //set background colour
             window.clear(sf::Color(153, 76, 0));
             window.draw(circle);
             window.draw(cheese);
+            for (int i = 0; i < pizza.getToppings().size();i++){
+                window.draw(*(pizza.getToppings()[i]->renderTopping()));
+            }
+            //window.draw(*pepperoni);
             window.display();
         }
         //end of sfml
@@ -354,6 +380,27 @@ int main() {
         // Take pizza out of the oven
         std::cout << "Press 1 to take the pizza out of the oven." << std::endl;
         std::cin >> input;
+        //Pizza Baking animation
+        //create a window
+        sf::RenderWindow windowBake(sf::VideoMode(800, 800),"Pizza Baking");
+        windowBake.draw(circle);
+        if (windowBake.isOpen())
+        {
+            sf::Event event;
+            while (windowBake.pollEvent(event))
+            {
+                if (event.type == sf::Event::Closed)
+                    windowBake.close();
+            }
+
+            //set background colour
+            windowBake.clear(sf::Color(153, 76, 0));
+            windowBake.draw(circle);
+            windowBake.draw(cheese);
+            windowBake.display();
+        }
+        windowBake.close();
+        //end of sfml
 
         pizza.setOvenDuration();
         pizza.setIsBaked(true);
