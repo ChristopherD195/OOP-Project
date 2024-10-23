@@ -12,8 +12,9 @@ Topping::Topping(std::string toppingType, int numToppingIncrease)
     this->numToppingIncrease = numToppingIncrease;
     this->isRendered = 0;
     // Random generator for topping positions
-    this->position.x = 400 + (rand() %  280) * std::cos((float)(rand() % 62) / 10.f);
-    this->position.y = 400 + (rand() %  280) * std::sin((float) (rand() % 62) / 10.f);//may change!!
+    float angle = (float)(rand() % 62) / 10.f;
+    this->position.x = 400 + (rand() %  280) * std::cos(angle);
+    this->position.y = 400 + (rand() %  280) * std::sin(angle);//may change!!
     
 }
 

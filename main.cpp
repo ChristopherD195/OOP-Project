@@ -19,6 +19,14 @@
 #include <SFML/Graphics.hpp>
 #include <Shape.hpp>
 
+//function to create a unit vector
+sf:: Vector2f unitVector (sf::Vector2f click) {
+    //calculate the length from the click to the centre
+    float length = std::sqrt(click.x*click.x + click.y*click.y);
+    //return unit vector
+    return sf::Vector2f(click.x/length,click.y/length);
+}
+
 
 int main() {
     
@@ -138,6 +146,8 @@ int main() {
         std::cout << "Number of pineapple slices: " << customerToppings[2] << std::endl;
         std::cout << "Number of olive slices: " << customerToppings[3] << std::endl;
 
+        
+
         gameStage = 1;  // Move to the next game stage
     }
 
@@ -164,6 +174,7 @@ int main() {
         sf::RenderWindow window(sf::VideoMode(800, 800),"New Pizza");
         window.setFramerateLimit(20);
         window.draw(circle);
+        std::cout << "Please press mouse button to randomly spread a topping\n";
         // sf::Shape* pepperoni = new sf::CircleShape (30);  // Radius of 30 for pepperoni
         // pepperoni->setFillColor(sf::Color(255, 0, 0));
         // sf::Vector2f position;
@@ -175,6 +186,8 @@ int main() {
         while (window.isOpen())
         {
             sf::Event event;
+
+            
             while (window.pollEvent(event))
             {
                 if (event.type == sf::Event::Closed) {
@@ -384,7 +397,7 @@ int main() {
         //create a window
         sf::RenderWindow windowBake(sf::VideoMode(800, 800),"Pizza Baking");
         windowBake.draw(circle);
-        if (windowBake.isOpen())
+        while (windowBake.isOpen())
         {
             sf::Event event;
             while (windowBake.pollEvent(event))
@@ -410,7 +423,7 @@ int main() {
         // Calculate oven baking efficiency
         efficiency.setOvenDurationEfficiency(customer.getOvenDuration(), pizza.getOvenDuration());
         std::cout << "Oven efficiency: " << efficiency.getOvenDurationEfficiency() << std::endl;
-    }
+    } 
 
     if (gameStage == 3) {
         // Cut the pizza or quit
@@ -445,6 +458,54 @@ int main() {
         }
         pizza.setNumCuts(playerPizzaCuts);
 
+        //create a vector container to store cutting lines
+    std::vector<sf::VertexArray> cutLines;
+
+    //create the game window
+    sf::RenderWindow windowCut(sf::VideoMode(800, 800), "Pizza Cutting");
+    sf::Vector2f Centre;
+    Centre.x = 400.f;
+    Centre.y=400.f;
+
+     while(windowCut.isOpen()) {//when window is open
+        sf::Event event;
+        while (windowCut.pollEvent(event))
+        {
+            // Request for closing the window
+            if (event.type == sf::Event::Closed)
+                windowCut.close();
+        
+            // The escape key was pressed
+            if (event.type == sf::Event::MouseButtonPressed ) {
+                //create a vector to store mouse position
+                sf::Vector2f mousePosition(event.mouseButton.x, event.mouseButton.y);
+
+                //create a unit vector pointing to the same direction
+                sf::Vector2f vector = mousePosition - Centre;
+                sf::Vector2f direction = unitVector(vector);
+
+                //draw a line between centre and mouse click
+                sf::VertexArray cut(sf::Lines, 2);
+                cut[0].position = center;
+                cut[1].position = center + sf::Vector2f(direction.x * 280,direction.y*280);
+                
+                cut[0].color = sf::Color::Black;
+                cut[1].color = sf::Color::Black;
+
+                cutLines.push_back(cut);//add new cuts to the cut line vector
+            }
+        windowCut.clear(sf::Color(153, 76, 0));
+        windowCut.draw(circle);
+        windowCut.draw(cheese);
+        //draw all cutting lines
+        for (const auto& cut : cutLines) {
+            windowCut.draw(cut);
+        }
+        windowCut.display();
+        }
+
+        windowCut.close();
+
         // Calculate tips and efficiency
         efficiency.setCuttingEfficiency(customer.getNumCuts(), pizza.getNumCuts());
         std::cout << "Cuts efficiency: " << efficiency.getCuttingEfficiency() << std::endl;
@@ -477,4 +538,5 @@ int main() {
     std::cout <<"That's the end of the game."<<std::endl;
     std::ofstream fileOut("game_state.txt");// Overwrite the content
     file.close(); // Close immediately to delete content
+}
 }

@@ -8,6 +8,6 @@ sf::Shape* Chicken::renderTopping(){
     sf::RectangleShape* chicken = new sf::RectangleShape(sf::Vector2f(40, 35));
     chicken->setFillColor(sf::Color(255, 204, 102));
     chicken->setPosition(position.x, position.y);
-    std::cout<<"Chicken rendered successfully"<<std::endl;
+    // std::cout<<"Chicken rendered successfully"<<std::endl;
     return chicken;
 };
